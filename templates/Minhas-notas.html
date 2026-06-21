@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minhas Notas</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f4f5f8;
+}
+
+.container{
+    display:flex;
+    min-height:100vh;
+}
+
+/* Sidebar */
+
+.sidebar{
+    width:260px;
+    background:#002b6f;
+    color:white;
+    padding:30px 0;
+}
+
+.logo{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.logo h2{
+    font-size:42px;
+}
+
+.logo span{
+    letter-spacing:3px;
+    font-size:12px;
+}
+
+.sidebar ul{
+    list-style:none;
+}
+
+.sidebar li{
+    padding:18px 30px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.sidebar li:hover{
+    background:rgba(255,255,255,.08);
+}
+
+.sidebar li.active{
+    background:#b10d31;
+    border-radius:10px;
+    margin:0 10px;
+}
+
+/* Conteúdo */
+
+.content{
+    flex:1;
+    padding:40px;
+}
+
+.back{
+    text-decoration:none;
+    color:#9b1c31;
+    font-weight:600;
+}
+
+h1{
+    margin-top:15px;
+    color:#08245a;
+    font-size:48px;
+}
+
+/* Tabela */
+
+.table-card{
+    margin-top:35px;
+    background:white;
+    border-radius:16px;
+    padding:20px;
+    overflow:auto;
+    box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+    padding:18px;
+    text-align:center;
+    color:#0b255a;
+    font-size:15px;
+}
+
+td{
+    padding:20px 15px;
+    text-align:center;
+    border-top:1px solid #ececec;
+    font-size:17px;
+}
+
+td:first-child,
+th:first-child{
+    text-align:left;
+    font-weight:600;
+}
+
+.media{
+    color:#0d5ed7;
+    font-weight:700;
+    font-size:18px;
+}
+
+.baixo{
+    color:#c82333;
+    font-weight:700;
+}
+
+/* Card média geral */
+
+.card-media{
+    margin-top:30px;
+    background:white;
+    border-radius:16px;
+    padding:30px;
+    display:flex;
+    align-items:center;
+    gap:25px;
+    box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+
+.icon{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    background:#f6f6f6;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:40px;
+}
+
+.card-media h3{
+    color:#08245a;
+    margin-bottom:5px;
+}
+
+.card-media p{
+    color:#777;
+    margin-bottom:10px;
+}
+
+.card-media span{
+    font-size:60px;
+    color:#b10d31;
+    font-weight:700;
+}
+
+@media(max-width:900px){
+    .container{
+        flex-direction:column;
+    }
+
+    .sidebar{
+        width:100%;
+    }
+
+    h1{
+        font-size:36px;
+    }
+
+    .card-media{
+        flex-direction:column;
+        text-align:center;
+    }
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+    <aside class="sidebar">
+        <div class="logo">
+            <h2>LICEU</h2>
+            <span>PIAUIENSE</span>
+        </div>
+
+        <ul>
+            <li>🏠 Início</li>
+            <li>🏆 Ranking da Turma</li>
+            <li>👥 Ranking dos Alunos</li>
+            <li>📊 Ranking das Turmas</li>
+            <li class="active">📋 Minhas Notas</li>
+            <li>📅 Presença nas Aulas</li>
+        </ul>
+    </aside>
+
+    <main class="content">
+
+        <a href="#" class="back">← Início</a>
+        <h1>Minhas Notas</h1>
+
+        <div class="table-card">
+            <table>
+                <thead>
+                    <tr>
+                        <th rowspan="2">Disciplina</th>
+
+                        <th colspan="4">1º Trimestre</th>
+                        <th colspan="4">2º Trimestre</th>
+                        <th colspan="4">3º Trimestre</th>
+
+                        <th rowspan="2">Média Geral</th>
+                    </tr>
+
+                    <tr>
+                        <th>N1</th>
+                        <th>N2</th>
+                        <th>N3</th>
+                        <th>Média</th>
+
+                        <th>N1</th>
+                        <th>N2</th>
+                        <th>N3</th>
+                        <th>Média</th>
+
+                        <th>N1</th>
+                        <th>N2</th>
+                        <th>N3</th>
+                        <th>Média</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Matemática</td>
+                        <td>8,5</td>
+                        <td>9,0</td>
+                        <td>9,5</td>
+                        <td class="media">9,0</td>
+                        <td>9,0</td>
+                        <td>9,5</td>
+                        <td>10,0</td>
+                        <td class="media">9,5</td>
+                        <td>9,5</td>
+                        <td>10,0</td>
+                        <td>10,0</td>
+                        <td class="media">9,8</td>
+                        <td class="media">9,4</td>
+                    </tr>
+
+                    <tr>
+                        <td>Português</td>
+                        <td class="baixo">7,5</td>
+                        <td>8,0</td>
+                        <td>9,0</td>
+                        <td class="media">8,2</td>
+                        <td>8,0</td>
+                        <td>8,5</td>
+                        <td>9,0</td>
+                        <td class="media">8,5</td>
+                        <td>8,5</td>
+                        <td>9,0</td>
+                        <td>9,5</td>
+                        <td class="media">9,0</td>
+                        <td class="media">8,6</td>
+                    </tr>
+
+                    <tr>
+                        <td>História</td>
+                        <td class="baixo">7,0</td>
+                        <td>8,0</td>
+                        <td>8,5</td>
+                        <td class="media">7,8</td>
+                        <td>8,0</td>
+                        <td>8,5</td>
+                        <td>9,0</td>
+                        <td class="media">8,5</td>
+                        <td>8,5</td>
+                        <td>9,0</td>
+                        <td>9,5</td>
+                        <td class="media">9,0</td>
+                        <td class="media">8,4</td>
+                    </tr>
+
+                    <tr>
+                        <td>Física</td>
+                        <td>8,5</td>
+                        <td>9,0</td>
+                        <td>9,5</td>
+                        <td class="media">9,0</td>
+                        <td>9,0</td>
+                        <td>9,5</td>
+                        <td>9,5</td>
+                        <td class="media">9,3</td>
+                        <td>9,5</td>
+                        <td>10,0</td>
+                        <td>10,0</td>
+                        <td class="media">9,8</td>
+                        <td class="media">9,4</td>
+                    </tr>
+
+                    <tr>
+                        <td>Programação</td>
+                        <td>9,0</td>
+                        <td>9,5</td>
+                        <td>10,0</td>
+                        <td class="media">9,5</td>
+                        <td>9,5</td>
+                        <td>10,0</td>
+                        <td>10,0</td>
+                        <td class="media">9,8</td>
+                        <td>9,5</td>
+                        <td>10,0</td>
+                        <td>10,0</td>
+                        <td class="media">9,8</td>
+                        <td class="media">9,7</td>
+                    </tr>
+
+                    <tr>
+                        <td>Inglês</td>
+                        <td class="baixo">7,5</td>
+                        <td>8,0</td>
+                        <td>8,5</td>
+                        <td class="media">8,0</td>
+                        <td>8,5</td>
+                        <td>9,0</td>
+                        <td>9,5</td>
+                        <td class="media">9,0</td>
+                        <td>9,0</td>
+                        <td>9,5</td>
+                        <td>10,0</td>
+                        <td class="media">9,5</td>
+                        <td class="media">8,8</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card-media">
+            <div class="icon">📈</div>
+
+            <div>
+                <h3>MÉDIA GERAL</h3>
+                <p>Todas as disciplinas</p>
+                <span>9,1</span>
+            </div>
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+</html>
