@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Desempenho das Turmas</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    display:flex;
+    background:#f5f6fa;
+}
+
+/* MENU */
+.sidebar{
+    width:260px;
+    min-height:100vh;
+    background:#001b57;
+    color:white;
+    padding:20px;
+}
+
+.logo{
+    text-align:center;
+    font-size:28px;
+    font-weight:bold;
+    margin-bottom:40px;
+}
+
+.menu{
+    list-style:none;
+}
+
+.menu li{
+    padding:15px;
+    margin-bottom:10px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.menu li:hover{
+    background:#14388d;
+}
+
+.active{
+    background:#d6003d;
+}
+
+/* CONTEÚDO */
+.main{
+    flex:1;
+    padding:30px;
+}
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.header h1{
+    color:#0d1b4c;
+}
+
+.filters{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:15px;
+    margin-bottom:25px;
+}
+
+select, button{
+    padding:12px;
+    border:1px solid #ddd;
+    border-radius:8px;
+}
+
+.export{
+    background:white;
+    color:#c00030;
+    border:1px solid #c00030;
+    font-weight:bold;
+}
+
+/* CARDS */
+.cards{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    margin-bottom:25px;
+}
+
+.card{
+    background:white;
+    border-radius:15px;
+    padding:20px;
+    box-shadow:0 2px 5px rgba(0,0,0,.08);
+}
+
+.card h2{
+    margin-top:10px;
+    color:#0d1b4c;
+}
+
+.card p{
+    color:#666;
+    margin-top:5px;
+}
+
+/* GRÁFICO */
+.chart{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    margin-bottom:25px;
+    box-shadow:0 2px 5px rgba(0,0,0,.08);
+}
+
+.chart-box{
+    height:250px;
+    border:2px dashed #c7c7c7;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#777;
+    margin-top:20px;
+}
+
+/* TABELA */
+.table-box{
+    background:white;
+    border-radius:15px;
+    padding:20px;
+    box-shadow:0 2px 5px rgba(0,0,0,.08);
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+    background:#001b57;
+    color:white;
+    padding:12px;
+}
+
+td{
+    padding:12px;
+    border-bottom:1px solid #ddd;
+    text-align:center;
+}
+
+.green{
+    color:green;
+    font-weight:bold;
+}
+
+.red{
+    color:#c00030;
+    font-weight:bold;
+}
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+    <div class="logo">LP</div>
+
+    <ul class="menu">
+        <li>🏠 Início</li>
+        <li>📝 Lançar Notas</li>
+        <li>📅 Fazer Chamada</li>
+        <li class="active">📊 Desempenho das Turmas</li>
+        <li>⚠️ Alunos em Alerta</li>
+        <li>📄 Relatórios</li>
+    </ul>
+</div>
+
+<div class="main">
+
+    <div class="header">
+        <h1>Desempenho das Turmas</h1>
+        <h3>Marcelo Silva</h3>
+    </div>
+
+    <div class="filters">
+        <select>
+            <option>2º B - Desenvolvimento de Sistemas</option>
+        </select>
+
+        <select>
+            <option>Matemática</option>
+        </select>
+
+        <select>
+            <option>2º Trimestre</option>
+        </select>
+
+        <select>
+            <option>2025</option>
+        </select>
+
+        <button class="export">Exportar Relatório</button>
+    </div>
+
+    <div class="cards">
+        <div class="card">
+            <p>Total de Alunos</p>
+            <h2>38</h2>
+        </div>
+
+        <div class="card">
+            <p>Média Geral da Turma</p>
+            <h2 style="color:green;">8,2</h2>
+        </div>
+
+        <div class="card">
+            <p>Frequência Média</p>
+            <h2 style="color:#0066ff;">94%</h2>
+        </div>
+
+        <div class="card">
+            <p>Alunos em Alerta</p>
+            <h2 style="color:#c00030;">4</h2>
+        </div>
+    </div>
+
+    <div class="chart">
+        <h2>Evolução da Média da Turma por Trimestre</h2>
+
+        <div class="chart-box">
+            Área reservada para gráfico
+        </div>
+    </div>
+
+    <div class="table-box">
+        <h2>Ranking das Turmas por Média Geral</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Turma</th>
+                    <th>Disciplina</th>
+                    <th>Média Atual</th>
+                    <th>Frequência</th>
+                    <th>Alunos em Alerta</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>2º B - Desenvolvimento de Sistemas</td>
+                    <td>Matemática</td>
+                    <td>8,2</td>
+                    <td class="green">94%</td>
+                    <td class="red">4</td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>3º A - Desenvolvimento de Sistemas</td>
+                    <td>Matemática</td>
+                    <td>7,8</td>
+                    <td class="green">92%</td>
+                    <td class="red">6</td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>2º B - Jogos Digitais</td>
+                    <td>Matemática</td>
+                    <td>7,4</td>
+                    <td class="green">90%</td>
+                    <td class="red">5</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>
