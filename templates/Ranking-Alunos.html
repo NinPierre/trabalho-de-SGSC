@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ranking dos Alunos</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+  <aside class="sidebar">
+
+    <div class="logo-container">
+      <h2>LICEU PIAUIENSE</h2>
+    </div>
+
+    <nav class="menu">
+      <a href="#" class="menu-item">
+        <i class="fa-solid fa-house"></i>
+        Início
+      </a>
+
+      <a href="#" class="menu-item ativo">
+        <i class="fa-solid fa-users"></i>
+        Ranking dos Alunos
+      </a>
+
+      <a href="#" class="menu-item">
+        <i class="fa-solid fa-book"></i>
+        Minhas Notas
+      </a>
+    </nav>
+
+  </aside>
+
+  <main class="conteudo">
+
+    <h1>Ranking dos Alunos</h1>
+
+    <div class="filtros">
+
+      <div class="campo-filtro">
+        <label for="abrangencia">Abrangência</label>
+
+        <select id="abrangencia">
+          <option value="todas">Todas as Turmas</option>
+          <option value="3ads">3º A - Desenvolvimento de Sistemas</option>
+          <option value="2bds">2º B - Desenvolvimento de Sistemas</option>
+          <option value="1cds">1º C - Desenvolvimento de Sistemas</option>
+          <option value="1dds">1º D - Desenvolvimento de Sistemas</option>
+        </select>
+      </div>
+
+      <div class="campo-filtro">
+        <label for="filtro-notas">Visualizar</label>
+
+        <select id="filtro-notas">
+          <option value="geral">Média Geral</option>
+
+          <option value="portugues">Português</option>
+          <option value="ingles">Inglês</option>
+          <option value="artes">Artes</option>
+          <option value="educacaoFisica">Educação Física</option>
+          <option value="matematica">Matemática</option>
+          <option value="fisica">Física</option>
+          <option value="quimica">Química</option>
+          <option value="historia">História</option>
+          <option value="geografia">Geografia</option>
+          <option value="sociologia">Sociologia</option>
+          <option value="filosofia">Filosofia</option>
+        </select>
+      </div>
+
+    </div>
+
+    <table>
+
+      <thead>
+        <tr>
+          <th>Posição</th>
+          <th>Aluno</th>
+          <th>Turma</th>
+          <th id="titulo-nota">Média Geral</th>
+        </tr>
+      </thead>
+
+      <tbody id="corpo-tabela"></tbody>
+
+    </table>
+
+  </main>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
