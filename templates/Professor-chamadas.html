@@ -1,4 +1,4 @@
-﻿{% extends "base.html" %}
+{% extends "base.html" %}
 {% set perfil = 'professor' %}
 {% set active_page = 'chamadas' %}
 {% block title %}Fazer Chamada{% endblock %}
@@ -11,16 +11,206 @@
   <div class="filter-group"><label>Turma</label><select><option>2º B - Desenvolvimento de Sistemas</option></select></div>
   <div class="filter-group"><label>Disciplina</label><select><option>Matemática</option></select></div>
   <div class="filter-group"><label>Data</label><input class="input-control" type="date" value="2026-06-21"></div>
-  <div class="filter-group"><label>Ação</label><button class="btn btn-primary" type="button"><span class="material-symbols-outlined">save</span>Salvar chamada</button></div>
+  <div class="filter-group">
+    <label>&nbsp;</label>
+    <div class="chamada-actions">
+      <button class="btn-outline-sm" type="button" onclick="marcarTodos(true)">
+        <span class="material-symbols-outlined">done_all</span>Todos presentes
+      </button>
+      <button class="btn-outline-sm btn-danger-outline" type="button" onclick="marcarTodos(false)">
+        <span class="material-symbols-outlined">remove_done</span>Limpar
+      </button>
+    </div>
+  </div>
 </div>
-<div class="table-card">
-  <table>
-    <thead><tr><th>Aluno</th><th>Presente</th><th>Observação</th></tr></thead>
-    <tbody>
-      <tr><td>Vitória Sousa</td><td><input type="checkbox" checked></td><td><input class="input-control" placeholder="Opcional"></td></tr>
-      <tr><td>João Pedro</td><td><input type="checkbox" checked></td><td><input class="input-control" placeholder="Opcional"></td></tr>
-      <tr><td>Ana Clara</td><td><input type="checkbox"></td><td><input class="input-control" value="Falta justificada"></td></tr>
-    </tbody>
-  </table>
+
+<!-- Contador -->
+<div class="chamada-summary">
+  <div class="summary-item summary-presentes">
+    <span class="material-symbols-outlined">check_circle</span>
+    <div><div class="summary-num" id="countPresentes">4</div><div class="summary-label">Presentes</div></div>
+  </div>
+  <div class="summary-divider"></div>
+  <div class="summary-item summary-ausentes">
+    <span class="material-symbols-outlined">cancel</span>
+    <div><div class="summary-num" id="countAusentes">2</div><div class="summary-label">Ausentes</div></div>
+  </div>
+  <div class="summary-divider"></div>
+  <div class="summary-item summary-total">
+    <span class="material-symbols-outlined">groups</span>
+    <div><div class="summary-num" id="countTotal">6</div><div class="summary-label">Total</div></div>
+  </div>
+  <div class="summary-bar-wrap">
+    <div class="summary-bar" id="summaryBar" style="width: 66.6%"></div>
+  </div>
 </div>
+
+<!-- Lista de alunos -->
+<div class="chamada-lista">
+
+  <div class="chamada-row presente" data-presente="true">
+    <div class="chamada-num">1</div>
+    <div class="aluno-avatar-sm">V</div>
+    <div class="chamada-nome">
+      <span class="aluno-nome">Vitória Sousa</span>
+      <span class="aluno-matricula">Matrícula: 2024001</span>
+    </div>
+    <div class="chamada-btns">
+      <button class="btn-presenca btn-presente ativo" onclick="setPresenca(this, true)">
+        <span class="material-symbols-outlined">check_circle</span>Presente
+      </button>
+      <button class="btn-presenca btn-ausente" onclick="setPresenca(this, false)">
+        <span class="material-symbols-outlined">cancel</span>Ausente
+      </button>
+    </div>
+    <input class="chamada-obs" type="text" placeholder="Observação...">
+  </div>
+
+  <div class="chamada-row presente" data-presente="true">
+    <div class="chamada-num">2</div>
+    <div class="aluno-avatar-sm">J</div>
+    <div class="chamada-nome">
+      <span class="aluno-nome">João Pedro</span>
+      <span class="aluno-matricula">Matrícula: 2024002</span>
+    </div>
+    <div class="chamada-btns">
+      <button class="btn-presenca btn-presente ativo" onclick="setPresenca(this, true)">
+        <span class="material-symbols-outlined">check_circle</span>Presente
+      </button>
+      <button class="btn-presenca btn-ausente" onclick="setPresenca(this, false)">
+        <span class="material-symbols-outlined">cancel</span>Ausente
+      </button>
+    </div>
+    <input class="chamada-obs" type="text" placeholder="Observação...">
+  </div>
+
+  <div class="chamada-row ausente" data-presente="false">
+    <div class="chamada-num">3</div>
+    <div class="aluno-avatar-sm">A</div>
+    <div class="chamada-nome">
+      <span class="aluno-nome">Ana Clara</span>
+      <span class="aluno-matricula">Matrícula: 2024003</span>
+    </div>
+    <div class="chamada-btns">
+      <button class="btn-presenca btn-presente" onclick="setPresenca(this, true)">
+        <span class="material-symbols-outlined">check_circle</span>Presente
+      </button>
+      <button class="btn-presenca btn-ausente ativo" onclick="setPresenca(this, false)">
+        <span class="material-symbols-outlined">cancel</span>Ausente
+      </button>
+    </div>
+    <input class="chamada-obs" type="text" placeholder="Observação..." value="Falta justificada">
+  </div>
+
+  <div class="chamada-row presente" data-presente="true">
+    <div class="chamada-num">4</div>
+    <div class="aluno-avatar-sm">M</div>
+    <div class="chamada-nome">
+      <span class="aluno-nome">Marcos Lima</span>
+      <span class="aluno-matricula">Matrícula: 2024004</span>
+    </div>
+    <div class="chamada-btns">
+      <button class="btn-presenca btn-presente ativo" onclick="setPresenca(this, true)">
+        <span class="material-symbols-outlined">check_circle</span>Presente
+      </button>
+      <button class="btn-presenca btn-ausente" onclick="setPresenca(this, false)">
+        <span class="material-symbols-outlined">cancel</span>Ausente
+      </button>
+    </div>
+    <input class="chamada-obs" type="text" placeholder="Observação...">
+  </div>
+
+  <div class="chamada-row ausente" data-presente="false">
+    <div class="chamada-num">5</div>
+    <div class="aluno-avatar-sm">L</div>
+    <div class="chamada-nome">
+      <span class="aluno-nome">Larissa Mendes</span>
+      <span class="aluno-matricula">Matrícula: 2024005</span>
+    </div>
+    <div class="chamada-btns">
+      <button class="btn-presenca btn-presente" onclick="setPresenca(this, true)">
+        <span class="material-symbols-outlined">check_circle</span>Presente
+      </button>
+      <button class="btn-presenca btn-ausente ativo" onclick="setPresenca(this, false)">
+        <span class="material-symbols-outlined">cancel</span>Ausente
+      </button>
+    </div>
+    <input class="chamada-obs" type="text" placeholder="Observação...">
+  </div>
+
+  <div class="chamada-row presente" data-presente="true">
+    <div class="chamada-num">6</div>
+    <div class="aluno-avatar-sm">R</div>
+    <div class="chamada-nome">
+      <span class="aluno-nome">Rafael Costa</span>
+      <span class="aluno-matricula">Matrícula: 2024006</span>
+    </div>
+    <div class="chamada-btns">
+      <button class="btn-presenca btn-presente ativo" onclick="setPresenca(this, true)">
+        <span class="material-symbols-outlined">check_circle</span>Presente
+      </button>
+      <button class="btn-presenca btn-ausente" onclick="setPresenca(this, false)">
+        <span class="material-symbols-outlined">cancel</span>Ausente
+      </button>
+    </div>
+    <input class="chamada-obs" type="text" placeholder="Observação...">
+  </div>
+
+</div>
+
+<!-- Botão salvar fixo -->
+<div class="chamada-footer">
+  <button class="btn-salvar-chamada" type="button" onclick="salvarChamada()">
+    <span class="material-symbols-outlined">save</span>Salvar Chamada
+  </button>
+</div>
+
+<div class="toast" id="toast">
+  <span class="material-symbols-outlined">check_circle</span>Chamada salva com sucesso!
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  function setPresenca(btn, presente) {
+    const row = btn.closest('.chamada-row');
+    row.dataset.presente = presente;
+    row.classList.toggle('presente', presente);
+    row.classList.toggle('ausente', !presente);
+
+    row.querySelectorAll('.btn-presenca').forEach(b => b.classList.remove('ativo'));
+    btn.classList.add('ativo');
+
+    atualizarContadores();
+  }
+
+  function marcarTodos(presente) {
+    document.querySelectorAll('.chamada-row').forEach(row => {
+      row.dataset.presente = presente;
+      row.classList.toggle('presente', presente);
+      row.classList.toggle('ausente', !presente);
+      row.querySelectorAll('.btn-presenca').forEach(b => b.classList.remove('ativo'));
+      const alvo = row.querySelector(presente ? '.btn-presente' : '.btn-ausente');
+      if (alvo) alvo.classList.add('ativo');
+    });
+    atualizarContadores();
+  }
+
+  function atualizarContadores() {
+    const total = document.querySelectorAll('.chamada-row').length;
+    const presentes = document.querySelectorAll('.chamada-row.presente').length;
+    document.getElementById('countPresentes').textContent = presentes;
+    document.getElementById('countAusentes').textContent = total - presentes;
+    document.getElementById('countTotal').textContent = total;
+    document.getElementById('summaryBar').style.width = (presentes / total * 100) + '%';
+  }
+
+  function salvarChamada() {
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3000);
+  }
+
+  atualizarContadores();
+</script>
 {% endblock %}

@@ -1,4 +1,4 @@
-﻿{% extends "base.html" %}
+{% extends "base.html" %}
 {% set perfil = 'aluno' %}
 {% set active_page = 'aluno_inicio' %}
 {% block title %}Painel do Aluno{% endblock %}
@@ -43,18 +43,63 @@
 </section>
 
 <section class="panel">
-  <h2 class="panel-title"><span class="material-symbols-outlined">calendar_month</span>Junho 2026</h2>
-  <div class="table-card calendar-card">
-    <table class="calendar-table">
-      <thead><tr><th>Seg</th><th>Ter</th><th>Qua</th><th>Qui</th><th>Sex</th><th>Sáb</th><th>Dom</th></tr></thead>
-      <tbody>
-        <tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td></tr>
-        <tr><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td></tr>
-        <tr><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td><strong>21</strong></td></tr>
-        <tr><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td></tr>
-        <tr><td>29</td><td>30</td><td></td><td></td><td></td><td></td><td></td></tr>
-      </tbody>
-    </table>
+  <h2 class="panel-title"><span class="material-symbols-outlined">calendar_month</span>Junho 2026 — Agenda da Semana</h2>
+  <div class="week-grid">
+    <div class="day-card">
+      <div class="day-header">
+        <span class="day-name">Segunda</span>
+        <span class="day-num">16</span>
+      </div>
+      <div class="day-body">
+        <div class="aula-item aula-mat">Matemática</div>
+        <div class="aula-item aula-port">Português</div>
+        <div class="aula-item aula-prog">Programação</div>
+      </div>
+    </div>
+    <div class="day-card">
+      <div class="day-header">
+        <span class="day-name">Terça</span>
+        <span class="day-num">17</span>
+      </div>
+      <div class="day-body">
+        <div class="aula-item aula-hist">História</div>
+        <div class="aula-item aula-ing">Inglês</div>
+        <div class="aula-item aula-bd">Banco de Dados</div>
+      </div>
+    </div>
+    <div class="day-card">
+      <div class="day-header">
+        <span class="day-name">Quarta</span>
+        <span class="day-num">18</span>
+      </div>
+      <div class="day-body">
+        <div class="aula-item aula-mat">Matemática</div>
+        <div class="aula-item aula-prog">Programação</div>
+        <div class="aula-item aula-fis">Física</div>
+      </div>
+    </div>
+    <div class="day-card">
+      <div class="day-header">
+        <span class="day-name">Quinta</span>
+        <span class="day-num">19</span>
+      </div>
+      <div class="day-body">
+        <div class="aula-item aula-port">Português</div>
+        <div class="aula-item aula-hist">História</div>
+        <div class="aula-item aula-bd">Banco de Dados</div>
+      </div>
+    </div>
+    <div class="day-card day-card-today">
+      <div class="day-header">
+        <span class="day-name">Sexta</span>
+        <span class="day-num today-num">20</span>
+      </div>
+      <div class="day-body">
+        <div class="aula-item aula-ing">Inglês</div>
+        <div class="aula-item aula-fis">Física</div>
+        <div class="aula-item aula-prog">Programação</div>
+      </div>
+    </div>
   </div>
 </section>
 

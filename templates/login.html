@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -15,37 +15,46 @@
       <div class="top-bar-red"></div>
     </div>
 
-    <section class="login-brand" aria-label="Liceu Piauiense">
-      <div class="login-brand-mark">LP</div>
-      <h1>Liceu Piauiense</h1>
-      <p>Educação que transforma.</p>
-    </section>
+    <div class="login-wrapper">
+      <section class="login-brand" aria-label="Liceu Piauiense">
+        <img src="{{ url_for('static', filename='img/logo-liceu.png') }}" alt="Logo Liceu Piauiense" class="login-logo">
+        <h1>Liceu Piauiense</h1>
+        <p>Educação que transforma.</p>
+      </section>
 
-    <form class="login-card" action="{{ url_for('autenticar') }}" method="post">
-      {% with messages = get_flashed_messages() %}
-        {% if messages %}
-          {% for message in messages %}
-            <div class="flash-message">{{ message }}</div>
-          {% endfor %}
-        {% endif %}
-      {% endwith %}
+      <form class="login-card" action="{{ url_for('autenticar') }}" method="post">
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+              <div class="flash-message">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
 
-      <label for="cpf">CPF</label>
-      <div class="login-field">
-        <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" autocomplete="username" required>
-      </div>
+        <label for="cpf">CPF</label>
+        <div class="login-field">
+          <span class="field-icon material-symbols-outlined">person</span>
+          <input type="text" id="cpf" name="cpf" placeholder="Digite seu CPF" autocomplete="username" required>
+        </div>
 
-      <label for="senha">Senha</label>
-      <div class="login-field">
-        <input type="password" id="senha" name="senha" placeholder="Digite sua senha" autocomplete="current-password" required>
-        <button class="password-toggle" type="button" aria-label="Mostrar senha" onclick="togglePassword()">
-          <span class="material-symbols-outlined">visibility</span>
-        </button>
-      </div>
+        <label for="senha">Senha</label>
+        <div class="login-field">
+          <span class="field-icon material-symbols-outlined">lock</span>
+          <input type="password" id="senha" name="senha" placeholder="Digite sua senha" autocomplete="current-password" required>
+          <button class="password-toggle" type="button" aria-label="Mostrar senha" onclick="togglePassword()">
+            <span class="material-symbols-outlined">visibility</span>
+          </button>
+        </div>
 
-      <button class="login-button" type="submit">Entrar</button>
-      <div class="login-help">Esqueceu sua senha?</div>
-    </form>
+        <button class="login-button" type="submit">Entrar</button>
+        <div class="login-help">Esqueceu sua senha?</div>
+      </form>
+    </div>
+
+    <div class="bottom-bar" aria-hidden="true">
+      <div class="bottom-bar-blue"></div>
+      <div class="bottom-bar-red"></div>
+    </div>
   </main>
 
   <script>

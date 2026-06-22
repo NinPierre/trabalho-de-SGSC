@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -15,7 +15,7 @@
   <div class="app-shell">
     <aside class="sidebar">
       <div class="brand">
-        <div class="brand-mark">LP</div>
+        <img src="{{ url_for('static', filename='img/logo-liceu.png') }}" alt="Logo Liceu Piauiense" class="brand-logo">
         <span class="brand-title">Liceu Piauiense</span>
         <span class="brand-subtitle">Portal acadêmico</span>
       </div>
@@ -40,7 +40,7 @@
       </nav>
 
       <div class="sidebar-footer">
-        <a class="nav-link" href="{{ url_for('logout') }}"><span class="material-symbols-outlined">logout</span>Sair</a>
+        <!-- Botão Sair removido daqui - agora fica no dropdown do perfil -->
       </div>
     </aside>
 
@@ -51,11 +51,19 @@
           <h1 class="page-title">{% block page_title %}{% endblock %}</h1>
           {% block page_subtitle %}{% endblock %}
         </div>
-        <div class="user-profile">
-          <div class="avatar">{{ (nome or 'U')[:1] }}</div>
-          <div>
-            <div class="user-name">{{ nome or 'Usuário' }}</div>
-            <div class="user-role">{{ 'Professor' if perfil == 'professor' else 'Aluno' }}</div>
+        <div class="user-profile-wrapper">
+          <div class="user-profile" onclick="toggleProfileDropdown()" role="button" tabindex="0" aria-haspopup="true">
+            <div class="avatar">{{ (nome or 'U')[:1] }}</div>
+            <div>
+              <div class="user-name">{{ nome or 'Usuário' }}</div>
+              <div class="user-role">{{ 'Professor' if perfil == 'professor' else 'Aluno' }}</div>
+            </div>
+            <span class="material-symbols-outlined profile-chevron">expand_more</span>
+          </div>
+          <div class="profile-dropdown" id="profileDropdown">
+            <a class="dropdown-item" href="{{ url_for('logout') }}">
+              <span class="material-symbols-outlined">logout</span>Sair
+            </a>
           </div>
         </div>
       </header>
@@ -63,6 +71,19 @@
       {% block content %}{% endblock %}
     </main>
   </div>
+
+  <script>
+    function toggleProfileDropdown() {
+      const dd = document.getElementById('profileDropdown');
+      dd.classList.toggle('open');
+    }
+    document.addEventListener('click', function(e) {
+      const wrapper = document.querySelector('.user-profile-wrapper');
+      if (!wrapper.contains(e.target)) {
+        document.getElementById('profileDropdown').classList.remove('open');
+      }
+    });
+  </script>
   {% block scripts %}{% endblock %}
 </body>
 </html>

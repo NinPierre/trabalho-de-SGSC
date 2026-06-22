@@ -1,4 +1,4 @@
-﻿{% extends "base.html" %}
+{% extends "base.html" %}
 {% set perfil = 'professor' %}
 {% set active_page = 'desempenho' %}
 {% block title %}Desempenho das Turmas{% endblock %}
@@ -21,10 +21,17 @@
   <article class="card stat-card"><div class="icon-box icon-red"><span class="material-symbols-outlined">warning</span></div><div><div class="stat-label">Alunos em alerta</div><div class="stat-value">4</div></div></article>
 </section>
 
-<section class="panel">
-  <h2 class="panel-title"><span class="material-symbols-outlined">show_chart</span>Evolução da média por trimestre</h2>
-  <div class="chart-placeholder">Área reservada para gráfico</div>
-</section>
+<div class="grid grid-2-charts">
+  <section class="panel">
+    <h2 class="panel-title"><span class="material-symbols-outlined">show_chart</span>Evolução da média por trimestre</h2>
+    <canvas id="graficoEvolucao" height="160"></canvas>
+  </section>
+
+  <section class="panel">
+    <h2 class="panel-title"><span class="material-symbols-outlined">bar_chart</span>Distribuição de notas</h2>
+    <canvas id="graficoDistribuicao" height="160"></canvas>
+  </section>
+</div>
 
 <div class="table-card">
   <table>
@@ -36,4 +43,54 @@
     </tbody>
   </table>
 </div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  new Chart(document.getElementById('graficoEvolucao').getContext('2d'), {
+    type: 'line',
+    data: {
+      labels: ['1º Tri', '2º Tri', '3º Tri'],
+      datasets: [{
+        label: '2º B - Dev. Sistemas',
+        data: [7.4, 7.8, 8.2],
+        borderColor: '#2563eb',
+        backgroundColor: 'rgba(37,99,235,0.1)',
+        tension: 0.4,
+        fill: true,
+        pointRadius: 5,
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { position: 'top' } },
+      scales: {
+        y: { min: 0, max: 10, ticks: { stepSize: 2 }, grid: { color: '#e2e8f0' } },
+        x: { grid: { color: '#e2e8f0' } }
+      }
+    }
+  });
+
+  new Chart(document.getElementById('graficoDistribuicao').getContext('2d'), {
+    type: 'bar',
+    data: {
+      labels: ['0–4', '4–6', '6–7', '7–8', '8–9', '9–10'],
+      datasets: [{
+        label: 'Alunos',
+        data: [2, 4, 5, 10, 12, 5],
+        backgroundColor: ['#b91c1c','#ea580c','#eab308','#2563eb','#059669','#7c3aed'],
+        borderRadius: 6,
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { display: false } },
+      scales: {
+        y: { beginAtZero: true, ticks: { stepSize: 2 }, grid: { color: '#e2e8f0' } },
+        x: { grid: { display: false } }
+      }
+    }
+  });
+</script>
 {% endblock %}

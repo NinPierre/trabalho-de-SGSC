@@ -27,7 +27,7 @@
       {% for linha in notas %}
       <tr>
         <td><strong>{{ linha.disciplina }}</strong></td>
-        {% for valor in linha.valores %}<td class="{{ 'value-red' if valor < 8 else '' }}">{{ '%.1f'|format(valor)|replace('.', ',') }}</td>{% endfor %}
+        {% for valor in linha.valores %}<td class="{{ 'value-red' if valor < 6 else '' }}">{{ '%.1f'|format(valor)|replace('.', ',') }}</td>{% endfor %}
         <td class="value-blue">{{ linha.media }}</td>
       </tr>
       {% endfor %}
@@ -39,7 +39,7 @@
   <div class="icon-box icon-green"><span class="material-symbols-outlined">trending_up</span></div>
   <div>
     <div class="stat-label">Média geral</div>
-    <div class="stat-value value-accent">9,1</div>
+    <div class="stat-value value-blue">9,1</div>
     <div class="stat-note">Todas as disciplinas</div>
   </div>
 </section>

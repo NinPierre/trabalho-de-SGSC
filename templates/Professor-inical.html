@@ -1,4 +1,4 @@
-﻿{% extends "base.html" %}
+{% extends "base.html" %}
 {% set perfil = 'professor' %}
 {% set active_page = 'professor_inicio' %}
 {% block title %}Dashboard do Professor{% endblock %}
@@ -17,11 +17,70 @@
 <section class="panel">
   <h2 class="panel-title"><span class="material-symbols-outlined">monitoring</span>Evolução das Médias das Turmas</h2>
   <p class="stat-note">Média geral ao longo dos trimestres</p>
-  <div class="chart-placeholder">Área reservada para gráfico</div>
+  <canvas id="graficoMedias" height="100"></canvas>
 </section>
 
 <section class="notice">
   <span class="material-symbols-outlined">calendar_month</span>
   <div><strong>Informações importantes</strong><p class="stat-note">Não há avisos no momento.</p></div>
 </section>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const ctx = document.getElementById('graficoMedias').getContext('2d');
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['1º Trimestre', '2º Trimestre', '3º Trimestre'],
+      datasets: [
+        {
+          label: '2º B - Dev. Sistemas',
+          data: [7.4, 7.8, 8.1],
+          borderColor: '#2563eb',
+          backgroundColor: 'rgba(37,99,235,0.08)',
+          tension: 0.4,
+          fill: true,
+          pointRadius: 5,
+        },
+        {
+          label: '3º A - Dev. Sistemas',
+          data: [6.9, 7.5, 7.8],
+          borderColor: '#7c3aed',
+          backgroundColor: 'rgba(124,58,237,0.08)',
+          tension: 0.4,
+          fill: true,
+          pointRadius: 5,
+        },
+        {
+          label: '2º B - Jogos Digitais',
+          data: [5.2, 5.4, 5.9],
+          borderColor: '#ea580c',
+          backgroundColor: 'rgba(234,88,12,0.08)',
+          tension: 0.4,
+          fill: true,
+          pointRadius: 5,
+        },
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: 'top' }
+      },
+      scales: {
+        y: {
+          min: 0,
+          max: 10,
+          ticks: { stepSize: 2 },
+          grid: { color: '#e2e8f0' }
+        },
+        x: {
+          grid: { color: '#e2e8f0' }
+        }
+      }
+    }
+  });
+</script>
 {% endblock %}
