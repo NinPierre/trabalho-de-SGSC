@@ -1,196 +1,27 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Liceu Piauiense</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
-    </style>
-</head>
-<body class="flex min-h-screen text-slate-800">
+﻿{% extends "base.html" %}
+{% set perfil = 'professor' %}
+{% set active_page = 'professor_inicio' %}
+{% block title %}Dashboard do Professor{% endblock %}
+{% block eyebrow %}<div class="eyebrow">Dashboard</div>{% endblock %}
+{% block page_title %}Olá, {{ nome or 'Professor' }}{% endblock %}
+{% block page_subtitle %}<p class="page-subtitle">Resumo das turmas, médias e presença de hoje.</p>{% endblock %}
 
-    <aside class="w-64 bg-[#0a1931] text-slate-300 flex flex-col hidden md:flex">
-        <div class="p-6 flex flex-col items-center border-b border-slate-700/50">
-            <div class="w-16 h-16 bg-white text-[#0a1931] rounded-full flex items-center justify-center font-bold text-xl border-4 border-slate-400">
-                CEZG
-            </div>
-            <span class="mt-3 text-xs font-semibold tracking-widest text-slate-400 uppercase">Liceu Piauiense</span>
-        </div>
+{% block content %}
+<section class="grid grid-4">
+  <article class="card stat-card"><div class="icon-box icon-blue"><span class="material-symbols-outlined">groups</span></div><div><div class="stat-label">Total de alunos</div><div class="stat-value">184</div><div class="stat-note">sob sua responsabilidade</div></div></article>
+  <article class="card stat-card"><div class="icon-box icon-purple"><span class="material-symbols-outlined">co_present</span></div><div><div class="stat-label">Turmas vinculadas</div><div class="stat-value">8</div><div class="stat-note">turmas ativas</div></div></article>
+  <article class="card stat-card"><div class="icon-box icon-orange"><span class="material-symbols-outlined">star</span></div><div><div class="stat-label">Média geral</div><div class="stat-value">7,8</div><div class="stat-note">média ponderada</div></div></article>
+  <article class="card stat-card"><div class="icon-box icon-green"><span class="material-symbols-outlined">check_circle</span></div><div><div class="stat-label">Presença hoje</div><div class="stat-value">93%</div><div class="stat-note">dos alunos presentes</div></div></article>
+</section>
 
-        <nav class="flex-1 p-4 space-y-2">
-            <a href="#" class="flex items-center space-x-3 bg-[#a21caf] text-white px-4 py-3 rounded-lg font-medium transition">
-                <i class="fa-solid fa-house w-5 text-center"></i>
-                <span>Início</span>
-            </a>
-            <a href="#" class="flex items-center space-x-3 hover:bg-slate-800 px-4 py-3 rounded-lg font-medium transition">
-                <i class="fa-solid fa-pen-to-square w-5 text-center"></i>
-                <span>Lançar Notas</span>
-            </a>
-            <a href="#" class="flex items-center space-x-3 hover:bg-slate-800 px-4 py-3 rounded-lg font-medium transition">
-                <i class="fa-solid fa-calendar-check w-5 text-center"></i>
-                <span>Fazer Chamada</span>
-            </a>
-            <a href="#" class="flex items-center space-x-3 hover:bg-slate-800 px-4 py-3 rounded-lg font-medium transition">
-                <i class="fa-solid fa-chart-line w-5 text-center"></i>
-                <span>Desempenho das Turmas</span>
-            </a>
-            <a href="#" class="flex items-center space-x-3 hover:bg-slate-800 px-4 py-3 rounded-lg font-medium transition">
-                <i class="fa-solid fa-triangle-exclamation w-5 text-center"></i>
-                <span>Alunos em Alerta</span>
-            </a>
-            <a href="#" class="flex items-center space-x-3 hover:bg-slate-800 px-4 py-3 rounded-lg font-medium transition">
-                <i class="fa-solid fa-file-invoice w-5 text-center"></i>
-                <span>Relatórios</span>
-            </a>
-        </nav>
-    </aside>
+<section class="panel">
+  <h2 class="panel-title"><span class="material-symbols-outlined">monitoring</span>Evolução das Médias das Turmas</h2>
+  <p class="stat-note">Média geral ao longo dos trimestres</p>
+  <div class="chart-placeholder">Área reservada para gráfico</div>
+</section>
 
-    <main class="flex-1 p-6 md:p-8 overflow-y-auto">
-
-        <header class="flex justify-between items-center mb-8">
-            <div class="flex items-center space-x-2">
-                <h1 class="text-2xl font-bold text-slate-900">Olá, Professor Marcelo!</h1>
-                <span class="text-2xl">👋</span>
-            </div>
-
-            <div class="flex items-center space-x-4">
-                <div class="relative cursor-pointer p-2 bg-white rounded-full shadow-sm hover:shadow transition">
-                    <i class="fa-regular fa-bell text-xl text-slate-600"></i>
-                    <span class="absolute top-1 right-1 bg-red-500 text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full font-bold">3</span>
-                </div>
-                <div class="flex items-center space-x-2 cursor-pointer bg-white p-1.5 pr-4 rounded-full shadow-sm hover:shadow transition">
-                    <div class="w-8 h-8 bg-[#881337] text-white rounded-full flex items-center justify-center font-bold text-sm">
-                        M
-                    </div>
-                    <span class="text-sm font-medium text-slate-700 hidden sm:inline">Marcelo</span>
-                    <i class="fa-solid fa-chevron-down text-xs text-slate-400"></i>
-                </div>
-            </div>
-        </header>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-
-            <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 flex items-center space-x-4">
-                <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center text-xl">
-                    <i class="fa-solid fa-users"></i>
-                </div>
-                <div>
-                    <p class="text-xs text-slate-400 font-medium uppercase">Total de Alunos</p>
-                    <h3 class="text-2xl font-bold text-slate-900">184</h3>
-                    <p class="text-[11px] text-slate-500">alunos sob sua responsabilidade</p>
-                </div>
-            </div>
-
-            <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 flex items-center space-x-4">
-                <div class="w-12 h-12 bg-purple-50 text-purple-600 rounded-full flex items-center justify-center text-xl">
-                    <i class="fa-solid fa-chalkboard-user"></i>
-                </div>
-                <div>
-                    <p class="text-xs text-slate-400 font-medium uppercase">Turmas Vinculadas</p>
-                    <h3 class="text-2xl font-bold text-slate-900">8</h3>
-                    <p class="text-[11px] text-slate-500">turmas ativas</p>
-                </div>
-            </div>
-
-            <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 flex items-center space-x-4">
-                <div class="w-12 h-12 bg-amber-50 text-amber-500 rounded-full flex items-center justify-center text-xl">
-                    <i class="fa-solid fa-star"></i>
-                </div>
-                <div>
-                    <p class="text-xs text-slate-400 font-medium uppercase">Média Geral das Turmas</p>
-                    <h3 class="text-2xl font-bold text-slate-900 text-[#881337]">7,8</h3>
-                    <p class="text-[11px] text-slate-500">média ponderada</p>
-                </div>
-            </div>
-
-            <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 flex items-center space-x-4">
-                <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center text-xl">
-                    <i class="fa-regular fa-circle-check"></i>
-                </div>
-                <div>
-                    <p class="text-xs text-slate-400 font-medium uppercase">Taxa de Presença Hoje</p>
-                    <h3 class="text-2xl font-bold text-emerald-600">93%</h3>
-                    <p class="text-[11px] text-slate-500">dos alunos presentes</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 mb-8">
-            <div class="flex items-center space-x-2 mb-1">
-                <i class="fa-solid fa-chart-line text-slate-700"></i>
-                <h2 class="text-base font-bold text-slate-900">Evolução das Médias das Turmas</h2>
-            </div>
-            <p class="text-xs text-slate-400 mb-6">Média geral ao longo dos trimestres</p>
-
-            <div class="h-64 relative w-full">
-                <canvas id="evolucaoChart"></canvas>
-            </div>
-
-            <div class="mt-4 flex items-center space-x-2 text-xs font-semibold text-emerald-700 bg-emerald-50 w-max px-2.5 py-1 rounded-md">
-                <i class="fa-solid fa-arrow-up"></i>
-                <span>+1,0</span>
-                <span class="text-slate-500 font-normal">Evolução positiva em relação ao 2º trimestre</span>
-            </div>
-        </div>
-
-        <div class="bg-[#f0f4ff]/50 border border-blue-100 p-5 rounded-2xl">
-            <div class="flex items-center space-x-2 text-slate-800 font-bold text-sm mb-2">
-                <i class="fa-regular fa-calendar"></i>
-                <span>Informações importantes</span>
-            </div>
-            <p class="text-xs text-slate-500">Não há avisos no momento.</p>
-        </div>
-
-    </main>
-
-    <script>
-        const ctx = document.getElementById('evolucaoChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['1º Trimestre', '2º Trimestre', '3º Trimestre'],
-                datasets: [{
-                    label: 'Média',
-                    data: [6.8, 7.2, 7.8],
-                    borderColor: '#881337', // Cor vinho da linha
-                    backgroundColor: '#881337',
-                    borderWidth: 2,
-                    pointBackgroundColor: '#881337',
-                    pointRadius: 5,
-                    pointHoverRadius: 7,
-                    tension: 0.1 // Linha reta/suave sutil
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: { display: false } // Remove legenda padrão
-                },
-                scales: {
-                    y: {
-                        min: 0,
-                        max: 10,
-                        ticks: {
-                            stepSize: 2,
-                            color: '#94a3b8'
-                        },
-                        grid: {
-                            color: '#f1f5f9'
-                        }
-                    },
-                    x: {
-                        ticks: { color: '#94a3b8' },
-                        grid: { display: false } // Remove linhas verticais do fundo
-                    }
-                }
-            }
-        });
-    </script>
-</body>
-</html>
+<section class="notice">
+  <span class="material-symbols-outlined">calendar_month</span>
+  <div><strong>Informações importantes</strong><p class="stat-note">Não há avisos no momento.</p></div>
+</section>
+{% endblock %}

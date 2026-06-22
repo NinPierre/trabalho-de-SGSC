@@ -1,101 +1,47 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ranking dos Alunos</title>
+﻿{% extends "base.html" %}
+{% set perfil = 'aluno' %}
+{% set active_page = 'ranking_alunos' %}
+{% block title %}Ranking dos Alunos{% endblock %}
+{% block eyebrow %}<div class="eyebrow">Ranking</div>{% endblock %}
+{% block page_title %}Ranking dos Alunos{% endblock %}
+{% block page_subtitle %}<p class="page-subtitle">Compare as maiores médias por turma ou disciplina.</p>{% endblock %}
 
-  <link rel="stylesheet" href="style.css">
+{% block content %}
+<form class="filters">
+  <div class="filter-group">
+    <label for="abrangencia">Abrangência</label>
+    <select id="abrangencia" name="abrangencia">
+      <option>Todas as turmas</option>
+      <option>3º A - Desenvolvimento de Sistemas</option>
+      <option>2º B - Desenvolvimento de Sistemas</option>
+      <option>1º C - Desenvolvimento de Sistemas</option>
+    </select>
+  </div>
+  <div class="filter-group">
+    <label for="disciplina">Visualizar</label>
+    <select id="disciplina" name="disciplina">
+      <option>Média Geral</option>
+      <option>Português</option>
+      <option>Matemática</option>
+      <option>Física</option>
+      <option>História</option>
+    </select>
+  </div>
+</form>
 
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-</head>
-
-<body>
-
-  <aside class="sidebar">
-
-    <div class="logo-container">
-      <h2>LICEU PIAUIENSE</h2>
-    </div>
-
-    <nav class="menu">
-      <a href="#" class="menu-item">
-        <i class="fa-solid fa-house"></i>
-        Início
-      </a>
-
-      <a href="#" class="menu-item ativo">
-        <i class="fa-solid fa-users"></i>
-        Ranking dos Alunos
-      </a>
-
-      <a href="#" class="menu-item">
-        <i class="fa-solid fa-book"></i>
-        Minhas Notas
-      </a>
-    </nav>
-
-  </aside>
-
-  <main class="conteudo">
-
-    <h1>Ranking dos Alunos</h1>
-
-    <div class="filtros">
-
-      <div class="campo-filtro">
-        <label for="abrangencia">Abrangência</label>
-
-        <select id="abrangencia">
-          <option value="todas">Todas as Turmas</option>
-          <option value="3ads">3º A - Desenvolvimento de Sistemas</option>
-          <option value="2bds">2º B - Desenvolvimento de Sistemas</option>
-          <option value="1cds">1º C - Desenvolvimento de Sistemas</option>
-          <option value="1dds">1º D - Desenvolvimento de Sistemas</option>
-        </select>
-      </div>
-
-      <div class="campo-filtro">
-        <label for="filtro-notas">Visualizar</label>
-
-        <select id="filtro-notas">
-          <option value="geral">Média Geral</option>
-
-          <option value="portugues">Português</option>
-          <option value="ingles">Inglês</option>
-          <option value="artes">Artes</option>
-          <option value="educacaoFisica">Educação Física</option>
-          <option value="matematica">Matemática</option>
-          <option value="fisica">Física</option>
-          <option value="quimica">Química</option>
-          <option value="historia">História</option>
-          <option value="geografia">Geografia</option>
-          <option value="sociologia">Sociologia</option>
-          <option value="filosofia">Filosofia</option>
-        </select>
-      </div>
-
-    </div>
-
-    <table>
-
-      <thead>
-        <tr>
-          <th>Posição</th>
-          <th>Aluno</th>
-          <th>Turma</th>
-          <th id="titulo-nota">Média Geral</th>
-        </tr>
-      </thead>
-
-      <tbody id="corpo-tabela"></tbody>
-
-    </table>
-
-  </main>
-
-  <script src="script.js"></script>
-
-</body>
-</html>
+<div class="table-card">
+  <table>
+    <thead><tr><th>Posição</th><th>Aluno</th><th>Turma</th><th>Média Geral</th></tr></thead>
+    <tbody>
+      {% for aluno in ranking_alunos %}
+      <tr>
+        <td>{% if loop.index == 1 %}<span class="medal gold">1</span>{% elif loop.index == 2 %}<span class="medal silver">2</span>{% elif loop.index == 3 %}<span class="medal bronze">3</span>{% else %}{{ loop.index }}{% endif %}</td>
+        <td><strong>{{ aluno.nome }}</strong></td>
+        <td>{{ aluno.turma }}</td>
+        <td class="value-accent">{{ aluno.media }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

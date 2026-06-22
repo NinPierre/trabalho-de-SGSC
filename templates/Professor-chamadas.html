@@ -1,0 +1,26 @@
+﻿{% extends "base.html" %}
+{% set perfil = 'professor' %}
+{% set active_page = 'chamadas' %}
+{% block title %}Fazer Chamada{% endblock %}
+{% block eyebrow %}<div class="eyebrow">Presença</div>{% endblock %}
+{% block page_title %}Fazer Chamada{% endblock %}
+{% block page_subtitle %}<p class="page-subtitle">Marque a presença dos alunos na aula selecionada.</p>{% endblock %}
+
+{% block content %}
+<div class="filters">
+  <div class="filter-group"><label>Turma</label><select><option>2º B - Desenvolvimento de Sistemas</option></select></div>
+  <div class="filter-group"><label>Disciplina</label><select><option>Matemática</option></select></div>
+  <div class="filter-group"><label>Data</label><input class="input-control" type="date" value="2026-06-21"></div>
+  <div class="filter-group"><label>Ação</label><button class="btn btn-primary" type="button"><span class="material-symbols-outlined">save</span>Salvar chamada</button></div>
+</div>
+<div class="table-card">
+  <table>
+    <thead><tr><th>Aluno</th><th>Presente</th><th>Observação</th></tr></thead>
+    <tbody>
+      <tr><td>Vitória Sousa</td><td><input type="checkbox" checked></td><td><input class="input-control" placeholder="Opcional"></td></tr>
+      <tr><td>João Pedro</td><td><input type="checkbox" checked></td><td><input class="input-control" placeholder="Opcional"></td></tr>
+      <tr><td>Ana Clara</td><td><input type="checkbox"></td><td><input class="input-control" value="Falta justificada"></td></tr>
+    </tbody>
+  </table>
+</div>
+{% endblock %}

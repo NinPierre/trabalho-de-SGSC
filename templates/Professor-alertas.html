@@ -1,0 +1,27 @@
+﻿{% extends "base.html" %}
+{% set perfil = 'professor' %}
+{% set active_page = 'alertas' %}
+{% block title %}Alunos em Alerta{% endblock %}
+{% block eyebrow %}<div class="eyebrow">Acompanhamento</div>{% endblock %}
+{% block page_title %}Alunos em Alerta{% endblock %}
+{% block page_subtitle %}<p class="page-subtitle">Alunos com média baixa, frequência reduzida ou necessidade de acompanhamento.</p>{% endblock %}
+
+{% block content %}
+<div class="filters">
+  <div class="filter-group"><label>Turma</label><select><option>2º B - Desenvolvimento de Sistemas</option></select></div>
+  <div class="filter-group"><label>Disciplina</label><select><option>Matemática</option></select></div>
+  <div class="filter-group"><label>Trimestre</label><select><option>2º Trimestre</option></select></div>
+  <div class="filter-group"><label>Ano</label><select><option>2026</option></select></div>
+</div>
+
+<div class="table-card">
+  <table>
+    <thead><tr><th>Aluno</th><th>Turma</th><th>Média</th><th>Frequência</th><th>Motivo</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>Enzo Ian</td><td>2º B - DS</td><td class="value-red">5,8</td><td class="value-blue">89%</td><td>Média abaixo do esperado</td><td><span class="badge badge-red">Alerta</span></td></tr>
+      <tr><td>Zaquel Emanuel</td><td>2º B - DS</td><td class="value-blue">7,2</td><td class="value-red">72%</td><td>Frequência próxima do limite</td><td><span class="badge badge-red">Alerta</span></td></tr>
+      <tr><td>Flávio Henrique</td><td>3º A - DS</td><td class="value-blue">6,1</td><td class="value-blue">94%</td><td>Queda de desempenho</td><td><span class="badge badge-blue">Acompanhar</span></td></tr>
+    </tbody>
+  </table>
+</div>
+{% endblock %}

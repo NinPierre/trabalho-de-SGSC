@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Liceu Piauiense{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">LP</div>
+        <span class="brand-title">Liceu Piauiense</span>
+        <span class="brand-subtitle">Portal acadêmico</span>
+      </div>
+
+      <nav class="sidebar-nav" aria-label="Menu principal">
+        {% if perfil == 'professor' %}
+          <a class="nav-link {{ 'active' if active_page == 'professor_inicio' else '' }}" href="{{ url_for('professor_inicio') }}"><span class="material-symbols-outlined">home</span>Início</a>
+          <a class="nav-link {{ 'active' if active_page == 'lancar_notas' else '' }}" href="{{ url_for('lancar_notas') }}"><span class="material-symbols-outlined">edit_note</span>Lançar Notas</a>
+          <a class="nav-link {{ 'active' if active_page == 'chamadas' else '' }}" href="{{ url_for('fazer_chamada') }}"><span class="material-symbols-outlined">assignment_turned_in</span>Fazer Chamada</a>
+          <a class="nav-link {{ 'active' if active_page == 'desempenho' else '' }}" href="{{ url_for('professor_desempenho') }}"><span class="material-symbols-outlined">monitoring</span>Desempenho</a>
+          <a class="nav-link {{ 'active' if active_page == 'alertas' else '' }}" href="{{ url_for('alunos_alerta') }}"><span class="material-symbols-outlined">warning</span>Alunos em Alerta</a>
+          <a class="nav-link {{ 'active' if active_page == 'relatorios' else '' }}" href="{{ url_for('professor_relatorios') }}"><span class="material-symbols-outlined">description</span>Relatórios</a>
+        {% else %}
+          <a class="nav-link {{ 'active' if active_page == 'aluno_inicio' else '' }}" href="{{ url_for('aluno_inicio') }}"><span class="material-symbols-outlined">home</span>Início</a>
+          <a class="nav-link {{ 'active' if active_page == 'ranking_turma' else '' }}" href="{{ url_for('ranking_turma') }}"><span class="material-symbols-outlined">workspace_premium</span>Ranking da Turma</a>
+          <a class="nav-link {{ 'active' if active_page == 'ranking_alunos' else '' }}" href="{{ url_for('ranking_alunos') }}"><span class="material-symbols-outlined">groups</span>Ranking dos Alunos</a>
+          <a class="nav-link {{ 'active' if active_page == 'ranking_turmas' else '' }}" href="{{ url_for('ranking_turmas') }}"><span class="material-symbols-outlined">school</span>Ranking das Turmas</a>
+          <div class="nav-separator"></div>
+          <a class="nav-link {{ 'active' if active_page == 'notas' else '' }}" href="{{ url_for('aluno_notas') }}"><span class="material-symbols-outlined">fact_check</span>Minhas Notas</a>
+          <a class="nav-link {{ 'active' if active_page == 'presenca' else '' }}" href="{{ url_for('aluno_presenca') }}"><span class="material-symbols-outlined">event_available</span>Presença nas Aulas</a>
+        {% endif %}
+      </nav>
+
+      <div class="sidebar-footer">
+        <a class="nav-link" href="{{ url_for('logout') }}"><span class="material-symbols-outlined">logout</span>Sair</a>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="page-header">
+        <div>
+          {% block eyebrow %}{% endblock %}
+          <h1 class="page-title">{% block page_title %}{% endblock %}</h1>
+          {% block page_subtitle %}{% endblock %}
+        </div>
+        <div class="user-profile">
+          <div class="avatar">{{ (nome or 'U')[:1] }}</div>
+          <div>
+            <div class="user-name">{{ nome or 'Usuário' }}</div>
+            <div class="user-role">{{ 'Professor' if perfil == 'professor' else 'Aluno' }}</div>
+          </div>
+        </div>
+      </header>
+
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,26 @@
+﻿{% extends "base.html" %}
+{% set perfil = 'aluno' %}
+{% set active_page = 'ranking_turma' %}
+{% block title %}Ranking da Turma{% endblock %}
+{% block eyebrow %}<div class="eyebrow">Minha turma</div>{% endblock %}
+{% block page_title %}Ranking da Turma{% endblock %}
+{% block page_subtitle %}<p class="page-subtitle">Classificação da turma 2º B por média geral.</p>{% endblock %}
+
+{% block content %}
+<div class="table-card">
+  <table>
+    <thead><tr><th>Posição</th><th>Aluno</th><th>Média</th><th>Frequência</th><th>Situação</th></tr></thead>
+    <tbody>
+      {% for aluno in ranking_turma %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td><strong>{{ aluno.nome }}</strong></td>
+        <td class="value-accent">{{ aluno.media }}</td>
+        <td class="value-green">{{ aluno.frequencia }}</td>
+        <td><span class="badge badge-green">Regular</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

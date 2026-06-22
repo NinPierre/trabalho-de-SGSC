@@ -1,0 +1,25 @@
+﻿{% extends "base.html" %}
+{% set perfil = 'professor' %}
+{% set active_page = 'lancar_notas' %}
+{% block title %}Lançar Notas{% endblock %}
+{% block eyebrow %}<div class="eyebrow">Notas</div>{% endblock %}
+{% block page_title %}Lançar Notas{% endblock %}
+{% block page_subtitle %}<p class="page-subtitle">Registre notas por turma, disciplina e avaliação.</p>{% endblock %}
+
+{% block content %}
+<div class="filters">
+  <div class="filter-group"><label>Turma</label><select><option>2º B - Desenvolvimento de Sistemas</option></select></div>
+  <div class="filter-group"><label>Disciplina</label><select><option>Matemática</option></select></div>
+  <div class="filter-group"><label>Avaliação</label><select><option>N1 - 2º Trimestre</option></select></div>
+  <div class="filter-group"><label>Ação</label><button class="btn btn-primary" type="button"><span class="material-symbols-outlined">save</span>Salvar notas</button></div>
+</div>
+<div class="table-card">
+  <table>
+    <thead><tr><th>Aluno</th><th>N1</th><th>N2</th><th>N3</th><th>Média</th></tr></thead>
+    <tbody>
+      <tr><td>Vitória Sousa</td><td><input class="input-control" value="9,5"></td><td><input class="input-control" value="10,0"></td><td><input class="input-control" value="9,8"></td><td class="value-accent">9,8</td></tr>
+      <tr><td>José augusto</td><td><input class="input-control" value="8,0"></td><td><input class="input-control" value="8,5"></td><td><input class="input-control" value="9,0"></td><td class="value-accent">8,5</td></tr>
+    </tbody>
+  </table>
+</div>
+{% endblock %}

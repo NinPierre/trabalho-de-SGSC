@@ -17,6 +17,7 @@ CREATE TABLE disciplinas (
 CREATE TABLE usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(150) NOT NULL,
+    cpf VARCHAR(14) UNIQUE NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
     senha_hash VARCHAR(255) NOT NULL,
     role ENUM('aluno','professor','admin') NOT NULL,

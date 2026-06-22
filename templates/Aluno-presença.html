@@ -1,0 +1,27 @@
+﻿{% extends "base.html" %}
+{% set perfil = 'aluno' %}
+{% set active_page = 'presenca' %}
+{% block title %}Presença nas Aulas{% endblock %}
+{% block eyebrow %}<div class="eyebrow">Frequência</div>{% endblock %}
+{% block page_title %}Presença nas Aulas{% endblock %}
+{% block page_subtitle %}<p class="page-subtitle">Veja sua frequência por disciplina no período atual.</p>{% endblock %}
+
+{% block content %}
+<section class="grid grid-3">
+  <article class="card stat-card"><div class="icon-box icon-green"><span class="material-symbols-outlined">check_circle</span></div><div><div class="stat-label">Presenças</div><div class="stat-value">128</div><div class="stat-note">aulas confirmadas</div></div></article>
+  <article class="card stat-card"><div class="icon-box icon-red"><span class="material-symbols-outlined">cancel</span></div><div><div class="stat-label">Faltas</div><div class="stat-value">5</div><div class="stat-note">no ano letivo</div></div></article>
+  <article class="card stat-card"><div class="icon-box icon-blue"><span class="material-symbols-outlined">percent</span></div><div><div class="stat-label">Frequência</div><div class="stat-value">96%</div><div class="stat-note">acima do mínimo</div></div></article>
+</section>
+
+<div class="table-card">
+  <table>
+    <thead><tr><th>Disciplina</th><th>Aulas</th><th>Presenças</th><th>Faltas</th><th>Frequência</th><th>Situação</th></tr></thead>
+    <tbody>
+      <tr><td>Matemática</td><td>32</td><td>31</td><td>1</td><td class="value-green">97%</td><td><span class="badge badge-green">Regular</span></td></tr>
+      <tr><td>Português</td><td>30</td><td>29</td><td>1</td><td class="value-green">97%</td><td><span class="badge badge-green">Regular</span></td></tr>
+      <tr><td>História</td><td>24</td><td>22</td><td>2</td><td class="value-blue">92%</td><td><span class="badge badge-blue">Acompanhar</span></td></tr>
+      <tr><td>Física</td><td>28</td><td>27</td><td>1</td><td class="value-green">96%</td><td><span class="badge badge-green">Regular</span></td></tr>
+    </tbody>
+  </table>
+</div>
+{% endblock %}
