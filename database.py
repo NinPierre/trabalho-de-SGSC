@@ -1,11 +1,21 @@
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import declarative_base, sessionmaker
 
-DATABASE_URL = # PRECISO DA URL DO BANCO DE DADOS AQUI
+# Banco local SQLite
+DATABASE_URL = "sqlite:///liceu.db"
 
-engine = create_engine(DATABASE_URL)
+# Cria a conexão
+engine = create_engine(
+    DATABASE_URL,
+    echo=True
+)
 
-SessionLocal = sessionmaker(bind=engine)
+# Cria a sessão
+SessionLocal = sessionmaker(
+    autocommit=False,
+    autoflush=False,
+    bind=engine
+)
 
+# Base para os modelos
 Base = declarative_base()

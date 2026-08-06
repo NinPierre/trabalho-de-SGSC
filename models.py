@@ -2,218 +2,251 @@ from datetime import datetime
 
 from sqlalchemy import (
     Column,
-    BigInteger,
     Integer,
     String,
     Boolean,
-    Enum,
-    Numeric,
+    Float,
     DateTime,
-    Text,
     ForeignKey,
-    Index,
-    create_engine
+    Text
 )
 
-from sqlalchemy.orm import relationship, sessionmaker
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import relationship
 
-DATABASE_URL = " INSIRA_A_URL_DO_SEU_BANCO_AQUI "
-
-engine = create_engine(DATABASE_URL)
-
-SessionLocal = sessionmaker(bind=engine)
-
-Base = declarative_base()
+from database import Base, engine
 
 
-# ==========================
-# USUÁRIO
-# ==========================
+# =====================================================
+# USUÁRIOS
+# =====================================================
+
 class Usuario(Base):
-    __tablename__ = "usuario"
+    __tablename__ = "usuarios"
 
-    id = Column(BigInteger, primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True, index=True)
     nome = Column(String(150), nullable=False)
-    login = Column(String(50), unique=True, nullable=False)
+    login = Column(String(80), unique=True, nullable=False)
     senha = Column(String(255), nullable=False)
-
-    perfil = Column(
-        Enum(
-            "ADMIN",
-            "COORDENADOR",
-            "PROFESSOR",
-            name="perfil_usuario"
-        ),
-        nullable=False
-    )
-
+    perfil = Column(String(30), nullable=False)
     ativo = Column(Boolean, default=True)
     criado_em = Column(DateTime, default=datetime.utcnow)
 
-    importacoes = relationship("Importacao", back_populates="usuario")
 
+# =====================================================
+# PROFESSORES
+# =====================================================
 
-# ==========================
-# PROFESSOR
-# ==========================
 class Professor(Base):
-    __tablename__ = "professor"
+    __tablename__ = "professores"
 
-    id = Column(BigInteger, primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True, index=True)
     nome = Column(String(150), nullable=False)
-    matricula = Column(String(30))
     email = Column(String(150))
     telefone = Column(String(20))
 
     turmas = relationship("Turma", back_populates="professor")
 
 
-# ==========================
-# CURSO
-# ==========================
-class Curso(Base):
-    __tablename__ = "curso"
+# =====================================================
+# CURSOS
+# =====================================================
 
-    id = Column(BigInteger, primary_key=True, autoincrement=True)
+class Curso(Base):
+    __tablename__ = "cursos"
+
+    id = Column(Integer, primary_key=True, index=True)
     nome = Column(String(100), nullable=False)
     descricao = Column(Text)
 
     turmas = relationship("Turma", back_populates="curso")
 
 
-# ==========================
-# DISCIPLINA
-# ==========================
-class Disciplina(Base):
-    __tablename__ = "disciplina"
+# =====================================================
+# DISCIPLINAS
+# =====================================================
 
-    id = Column(BigInteger, primary_key=True, autoincrement=True)
-    nome = Column(String(150))
+class Disciplina(Base):
+    __tablename__ = "disciplinas"
+
+    id = Column(Integer, primary_key=True, index=True)
+    nome = Column(String(150), nullable=False)
     carga_horaria = Column(Integer)
 
     turmas = relationship("Turma", back_populates="disciplina")
 
 
-# ==========================
-# TURMA
-# ==========================
-class Turma(Base):
-    __tablename__ = "turma"
+# =====================================================
+# TURMAS
+# =====================================================
 
-    id = Column(BigInteger, primary_key=True, autoincrement=True)
-    codigo = Column(String(60))
+class Turma(Base):
+    __tablename__ = "turmas"
+
+    id = Column(Integer, primary_key=True, index=True)
+
+    codigo = Column(String(50))
     serie = Column(String(50))
     turno = Column(String(30))
     ano = Column(Integer)
 
-    curso_id = Column(BigInteger, ForeignKey("curso.id"))
-    professor_id = Column(BigInteger, ForeignKey("professor.id"))
-    disciplina_id = Column(BigInteger, ForeignKey("disciplina.id"))
+    curso_id = Column(Integer, ForeignKey("cursos.id"))
+    professor_id = Column(Integer, ForeignKey("professores.id"))
+    disciplina_id = Column(Integer, ForeignKey("disciplinas.id"))
 
     curso = relationship("Curso", back_populates="turmas")
     professor = relationship("Professor", back_populates="turmas")
     disciplina = relationship("Disciplina", back_populates="turmas")
-    alunos = relationship("Aluno", back_populates="turma")
+
+    alunos = relationship(
+        "Aluno",
+        back_populates="turma",
+        cascade="all, delete-orphan"
+    )
 
 
-# ==========================
-# ALUNO
-# ==========================
+# =====================================================
+# ALUNOS
+# =====================================================
+
 class Aluno(Base):
-    __tablename__ = "aluno"
+    __tablename__ = "alunos"
 
-    id = Column(BigInteger, primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True, index=True)
+
     numero = Column(Integer)
     nome = Column(String(200), nullable=False)
-    matricula = Column(String(30))
+    matricula = Column(String(50), unique=True)
 
-    turma_id = Column(BigInteger, ForeignKey("turma.id"))
+    turma_id = Column(Integer, ForeignKey("turmas.id"))
 
     turma = relationship("Turma", back_populates="alunos")
-    notas = relationship("Nota", back_populates="aluno")
-    resultados_finais = relationship("ResultadoFinal", back_populates="aluno")
-    presencas = relationship("Presenca", back_populates="aluno")
+
+    notas = relationship(
+        "Nota",
+        back_populates="aluno",
+        cascade="all, delete-orphan"
+    )
+
+    presencas = relationship(
+        "Presenca",
+        back_populates="aluno",
+        cascade="all, delete-orphan"
+    )
+
+    resultado_final = relationship(
+        "ResultadoFinal",
+        back_populates="aluno",
+        uselist=False,
+        cascade="all, delete-orphan"
+    )
 
 
-# ==========================
-# NOTA
-# ==========================
+# =====================================================
+# NOTAS
+# =====================================================
+
 class Nota(Base):
-    __tablename__ = "nota"
+    __tablename__ = "notas"
 
-    id = Column(BigInteger, primary_key=True, autoincrement=True)
-    aluno_id = Column(BigInteger, ForeignKey("aluno.id"), nullable=False)
+    id = Column(Integer, primary_key=True, index=True)
+
     trimestre = Column(Integer)
 
-    nm1 = Column(Numeric(4, 1))
-    nm2 = Column(Numeric(4, 1))
-    nm3 = Column(Numeric(4, 1))
-    media = Column(Numeric(4, 1))
-    recuperacao = Column(Numeric(4, 1))
-    media_final = Column(Numeric(4, 1))
+    nm1 = Column(Float)
+    nm2 = Column(Float)
+    nm3 = Column(Float)
+
+    media = Column(Float)
+    recuperacao = Column(Float)
+    media_final = Column(Float)
+
+    aluno_id = Column(Integer, ForeignKey("alunos.id"))
 
     aluno = relationship("Aluno", back_populates="notas")
 
 
-# ==========================
+# =====================================================
 # RESULTADO FINAL
-# ==========================
+# =====================================================
+
 class ResultadoFinal(Base):
-    __tablename__ = "resultado_final"
+    __tablename__ = "resultados_finais"
 
-    id = Column(BigInteger, primary_key=True, autoincrement=True)
-    aluno_id = Column(BigInteger, ForeignKey("aluno.id"))
+    id = Column(Integer, primary_key=True, index=True)
 
-    media_anual = Column(Numeric(4, 1))
-    prova_final = Column(Numeric(4, 1))
-    media_final = Column(Numeric(4, 1))
-    recuperacao_final = Column(Numeric(4, 1))
+    media_anual = Column(Float)
+    prova_final = Column(Float)
+    media_final = Column(Float)
+    recuperacao_final = Column(Float)
+
     faltas = Column(Integer)
-    situacao = Column(String(20))
 
-    aluno = relationship("Aluno", back_populates="resultados_finais")
+    situacao = Column(String(30))
+
+    aluno_id = Column(Integer, ForeignKey("alunos.id"))
+
+    aluno = relationship(
+        "Aluno",
+        back_populates="resultado_final"
+    )
 
 
-# ==========================
-# PRESENÇA
-# ==========================
+# =====================================================
+# PRESENÇAS
+# =====================================================
+
 class Presenca(Base):
-    __tablename__ = "presenca"
+    __tablename__ = "presencas"
 
-    id = Column(BigInteger, primary_key=True, autoincrement=True)
-    aluno_id = Column(BigInteger, ForeignKey("aluno.id"), nullable=False)
-    data = Column(DateTime, default=datetime.utcnow)
-    presente = Column(Boolean, nullable=False)
+    id = Column(Integer, primary_key=True, index=True)
 
-    aluno = relationship("Aluno", back_populates="presencas")
+    data = Column(
+        DateTime,
+        default=datetime.utcnow
+    )
+
+    presente = Column(Boolean)
+
+    aluno_id = Column(Integer, ForeignKey("alunos.id"))
+
+    aluno = relationship(
+        "Aluno",
+        back_populates="presencas"
+    )
 
 
-# ==========================
-# IMPORTAÇÃO
-# ==========================
+# =====================================================
+# IMPORTAÇÕES
+# =====================================================
+
 class Importacao(Base):
-    __tablename__ = "importacao"
+    __tablename__ = "importacoes"
 
-    id = Column(BigInteger, primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True, index=True)
+
     arquivo = Column(String(255))
+
     professor = Column(String(150))
     disciplina = Column(String(150))
     turma = Column(String(100))
+
     serie = Column(String(50))
     ano = Column(Integer)
-    data_importacao = Column(DateTime, default=datetime.utcnow)
 
-    usuario_id = Column(BigInteger, ForeignKey("usuario.id"))
+    data_importacao = Column(
+        DateTime,
+        default=datetime.utcnow
+    )
 
-    usuario = relationship("Usuario", back_populates="importacoes")
 
+# =====================================================
+# CRIAR BANCO
+# =====================================================
 
-Index("idx_aluno_nome", Aluno.nome)
-Index("idx_turma", Turma.codigo)
-Index("idx_importacao", Importacao.data_importacao)
+def criar_banco():
+    Base.metadata.create_all(bind=engine)
 
 
 if __name__ == "__main__":
-    Base.metadata.create_all(bind=engine)
-    print("Tabelas criadas com sucesso!")
+    criar_banco()
+    print("Banco criado com sucesso!")
