@@ -1,95 +1,28 @@
 ﻿import os
 from functools import wraps
-
+from adm import *
 from flask import Flask, flash, redirect, render_template, request, session, url_for
 
-try:
-    import mysql.connector
-except ImportError:
-    mysql = None
+
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY", "EUSOUALUNOLICEU")
 
-DEMO_USERS = {
-    "11111111111": {"senha": "123", "nome": "Marcelo Silva", "tipo": "professor"},
-    "22222222222": {"senha": "123", "nome": "Vitória Sousa", "tipo": "aluno"},
-}
-
-NOTAS_ALUNO = [
-    {"disciplina": "Matemática", "valores": [8.5, 9.0, 9.5, 9.0, 9.5, 10.0, 9.5, 10.0, 10.0, 9.0, 9.5, 9.8], "media": "9,4"},
-    {"disciplina": "Português", "valores": [7.5, 8.0, 9.0, 8.2, 8.0, 8.5, 9.0, 8.5, 8.5, 9.0, 9.5, 9.0], "media": "8,6"},
-    {"disciplina": "História", "valores": [7.0, 8.0, 8.5, 7.8, 8.0, 8.5, 9.0, 8.5, 8.5, 9.0, 9.5, 9.0], "media": "8,4"},
-    {"disciplina": "Física", "valores": [8.5, 9.0, 9.5, 9.0, 9.0, 9.5, 9.5, 9.3, 9.5, 10.0, 10.0, 9.8], "media": "9,4"},
-    {"disciplina": "Programação", "valores": [9.0, 9.5, 10.0, 9.5, 9.5, 10.0, 10.0, 9.8, 9.5, 10.0, 10.0, 9.8], "media": "9,7"},
-]
-
-RANKING_ALUNOS = [
-    {"nome": "José wanderson", "turma": "2º B - Desenvolvimento de Sistemas", "media": "9,2"},
-    {"nome": "João Pedro", "turma": "3º A - Desenvolvimento de Sistemas", "media": "8,9"},
-    {"nome": "Ana Clara", "turma": "2º B - Desenvolvimento de Sistemas", "media": "8,7"},
-    {"nome": "Vitória Sousa", "turma": "1º C - Desenvolvimento de Sistemas", "media": "8,5"},
-]
-
-RANKING_TURMAS = [
-    {"nome": "2º B", "curso": "Desenvolvimento de Sistemas", "media": "8,2", "frequencia": "94%"},
-    {"nome": "3º A", "curso": "Desenvolvimento de Sistemas", "media": "7,8", "frequencia": "92%"},
-    {"nome": "2º B", "curso": "Jogos Digitais", "media": "7,4", "frequencia": "90%"},
-    {"nome": "1º C", "curso": "Desenvolvimento de Sistemas", "media": "7,1", "frequencia": "88%"},
-]
-
-RANKING_TURMA = [
-    {"nome": "Vitória Sousa", "media": "9,2", "frequencia": "96%"},
-    {"nome": "Ana Clara", "media": "8,7", "frequencia": "92%"},
-    {"nome": "João Pedro", "media": "8,5", "frequencia": "95%"},
-    {"nome": "Rafael Lima", "media": "8,1", "frequencia": "91%"},
-]
 
 
 def limpar_cpf(cpf):
     return "".join(char for char in (cpf or "") if char.isdigit())
 
 
-def buscar_usuario_no_banco(cpf, senha):
-    if mysql is None:
-        return None
-
-    db_config = {
-        "host": os.getenv("DB_HOST"),
-        "user": os.getenv("DB_USER"),
-        "password": os.getenv("DB_PASSWORD"),
-        "database": os.getenv("DB_NAME", "Professor_Connect"),
-    }
-
-    if not db_config["host"] or not db_config["user"]:
-        return None
-
-    conexao = mysql.connector.connect(**db_config)
-    cursor = conexao.cursor(dictionary=True)
-    try:
-        cursor.execute(
-            """
-            SELECT nome, role AS tipo
-            FROM usuarios
-            WHERE REPLACE(REPLACE(cpf, '.', ''), '-', '') = %s
-              AND senha_hash = %s
-            LIMIT 1
-            """,
-            (cpf, senha),
-        )
-        return cursor.fetchone()
-    finally:
-        cursor.close()
-        conexao.close()
-
 
 def autenticar_usuario(cpf, senha):
     cpf_limpo = limpar_cpf(cpf)
 
     try:
-        usuario_banco = buscar_usuario_no_banco(cpf_limpo, senha)
+        usuario_banco = buscar_usuario(cpf_limpo, senha)
+        use_banco = usuario_banco
         if usuario_banco:
-            return usuario_banco
+            return use_banco
     except Exception:
         pass
 

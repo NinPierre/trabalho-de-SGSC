@@ -25,7 +25,7 @@ class Usuario(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     nome = Column(String(150), nullable=False)
-    login = Column(String(80), unique=True, nullable=False)
+    cpf = Column(String(11), unique=True, nullable=False)
     senha = Column(String(255), nullable=False)
     perfil = Column(String(30), nullable=False)
     ativo = Column(Boolean, default=True)

@@ -1,12 +1,11 @@
 from datetime import datetime
 from decimal import Decimal
-
+from database import SessionLocal, engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import func
 
-from seu_arquivo_unico import (
-    engine,
-    SessionLocal,
+from models import (
+
     Usuario,
     Professor,
     Curso,
@@ -19,23 +18,26 @@ from seu_arquivo_unico import (
     Importacao
 )
 
-Session = sessionmaker(bind=engine)
-session = Session()
+session = SessionLocal()
 
 
 # ==========================
 # ADMINISTRAÇÃO: USUÁRIO
 # ==========================
-def criar_usuario(nome, login, senha, perfil):
+def criar_usuario(nome, cpf, senha, perfil):
     novo_usuario = Usuario(
         nome=nome,
-        login=login,
+        cpf=cpf,
         senha=senha,
         perfil=perfil
     )
     session.add(novo_usuario)
     session.commit()
     return novo_usuario
+
+def buscar_usuario(cpf, senha):
+    
+    return session.query(Usuario).filter_by(cpf=cpf, senha=senha).first()
 
 
 def desativar_usuario(usuario_id):
@@ -276,3 +278,4 @@ def obter_boletim(aluno_id):
         "resultado_final": resultado,
         "presencas": presencas
     }
+
