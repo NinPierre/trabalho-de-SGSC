@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professores</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/adm/professores-adm.css') }}">
+</head>
+
+<body>
+
+    <aside>
+
+        <div class="logo">
+            <div class="circulo-logo"></div>
+            <h2>LICEU PIAUIENSE</h2>
+        </div>
+
+        <h4>PRINCIPAL</h4>
+        <ul>
+            <li>🏠 Dashboard</li>
+        </ul>
+
+        <h4>GESTÃO</h4>
+        <ul>
+            <li>👥 Alunos</li>
+            <li class="ativo">👩‍🏫 Professores</li>
+            <li>🔳 Turmas</li>
+        </ul>
+
+        <h4>ACADÊMICO</h4>
+        <ul>
+            <li>📝 Notas</li>
+            <li>📅 Frequência</li>
+            <li>🏆 Ranking</li>
+        </ul>
+
+        <footer>
+            ⚙️ Configurações
+        </footer>
+
+    </aside>
+
+    <main>
+ 
+        <header>
+
+            <div>
+                <h1>Professores</h1>
+                <p>Gerencie os professores da instituição.</p>
+            </div>
+
+            <div>
+
+                <div>
+                    🔔
+                    <span>3</span>
+                </div>
+
+                <div>
+                    <span>AD</span>
+
+                    <div>
+                        <strong>Admin</strong><br>
+                        <small>Administrador</small>
+                    </div>
+                </div>
+
+            </div>
+
+        </header>
+
+        <section>
+
+            <input type="text" placeholder="Buscar por nome ou disciplina...">
+
+            <button>+ Novo professor</button>
+
+        </section>
+
+        
+        <section>
+
+           
+            <article>
+
+                <div>
+                    <div>MC</div>
+
+                    <div>
+                        <h2>Maria</h2>
+                        <p>Matemática</p>
+                    </div>
+                </div>
+
+                <hr>
+
+                <p>3 turmas</p>
+                <p>20h semanais</p>
+
+                <span>Disponível</span>
+
+                <div>
+                    <button>Editar</button>
+                    <button>Visualizar</button>
+                </div>
+
+            </article>
+
+            
+            <article>
+
+                <div>
+                    <div>JP</div>
+
+                    <div>
+                        <h2>João Paulo</h2>
+                        <p>Língua Portuguesa</p>
+                    </div>
+                </div>
+
+                <hr>
+
+                <p>2 turmas</p>
+                <p>16h semanais</p>
+
+                <span>Disponível</span>
+
+                <div>
+                    <button>Editar</button>
+                    <button>Visualizar</button>
+                </div>
+
+            </article>
+
+           
+            <article>
+
+                <div>
+                    <div>AB</div>
+
+                    <div>
+                        <h2>Ana</h2>
+                        <p>História</p>
+                    </div>
+                </div>
+
+                <hr>
+
+                <p>2 turmas</p>
+                <p>14h semanais</p>
+
+                <span>Parcialmente disponível</span>
+
+                <div>
+                    <button>Editar</button>
+                    <button>Visualizar</button>
+                </div>
+
+            </article>
+
+            <article>
+
+                <div>
+                    <div>CS</div>
+
+                    <div>
+                        <h2>Carlos Eduardo</h2>
+                        <p>Física</p>
+                    </div>
+                </div>
+
+                <hr>
+
+                <p>2 turmas</p>
+                <p>18h semanais</p>
+
+                <span>Disponível</span>
+
+                <div>
+                    <button>Editar</button>
+                    <button>Visualizar</button>
+                </div>
+
+            </article>
+
+            
+            <article>
+
+                <div>
+                    <div>FO</div>
+
+                    <div>
+                        <h2>Fernanda</h2>
+                        <p>Química</p>
+                    </div>
+                </div>
+
+                <hr>
+
+                <p>3 turmas</p>
+                <p>20h semanais</p>
+
+                <span>Disponível</span>
+
+                <div>
+                    <button>Editar</button>
+                    <button>Visualizar</button>
+                </div>
+
+            </article>
+
+            <article>
+
+                <div>
+                    <div>LM</div>
+
+                    <div>
+                        <h2>Lucas</h2>
+                        <p>Biologia</p>
+                    </div>
+                </div>
+
+                <hr>
+
+                <p>1 turma</p>
+                <p>8h semanais</p>
+
+                <span>Indisponível</span>
+
+                <div>
+                    <button>Editar</button>
+                    <button>Visualizar</button>
+                </div>
+
+            </article>
+
+        </section>
+
+        
+        <footer>
+
+            <p>Mostrando 1 a 6 de 38 professores</p>
+
+            <div>
+
+                <button>&lt;</button>
+
+                <button>1</button>
+                <button>2</button>
+                <button>3</button>
+                <button>4</button>
+
+                <span>...</span>
+
+                <button>7</button>
+
+                <button>&gt;</button>
+
+            </div>
+
+            <select>
+                <option>6 por página</option>
+            </select>
+
+        </footer>
+
+    </main>
+
+</body>
+
+</html>

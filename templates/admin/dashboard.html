@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Liceu Piauiense</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/adm/dashboard-adm.css') }}">
+</head>
+<body>
+<div class="painel">
+    <aside class="sidebar">
+        <div class="logo">
+            <div class="circulo-logo"></div>
+            <h2>LICEU PIAUIENSE</h2>
+        </div>
+
+        <p class="titulo-secao">PRINCIPAL</p>
+        <ul class="menu">
+            <li class="ativo">🏠 Dashboard</li>
+        </ul>
+
+        <p class="titulo-secao">GESTÃO</p>
+        <ul class="menu">
+            <li>👥 Alunos</li>
+            <li>👩‍🏫 Professores</li>
+            <li>🔳 Turmas</li>
+        </ul>
+
+        <p class="titulo-secao">ACADÊMICO</p>
+        <ul class="menu">
+            <li>📝 Notas</li>
+            <li>📅 Frequência</li>
+            <li>🏆 Ranking</li>
+        </ul>
+
+        <div class="configuracoes">
+            ⚙️ Configurações
+        </div>
+    </aside>
+
+    <main class="conteudo">
+        <header class="cabecalho">
+            <div class="titulo-pagina">
+                <h1>Dashboard</h1>
+                <p>Visão geral da instituição em tempo real.</p>
+            </div>
+            <div class="area-usuario">
+                <span class="icone-sino">🔔</span>
+                <div class="perfil">
+                    <div class="iniciais">AD</div>
+                    <div>
+                        <p class="nome-usuario">Admin</p>
+                        <p class="cargo-usuario">Administrador</p>
+                    </div>
+                    <span class="seta-baixo">▼</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="cards-resumo">
+            <div class="card-resumo">
+                <div class="icone-card azul">👥</div>
+                <div class="dados-card">
+                    <p class="rotulo-card">Alunos</p>
+                    <p class="valor-card">1</p>
+                    <p class="variacao positivo">↑ este mês</p>
+                </div>
+            </div>
+
+            <div class="card-resumo">
+                <div class="icone-card rosa">🎓</div>
+                <div class="dados-card">
+                    <p class="rotulo-card">Professores</p>
+                    <p class="valor-card">87</p>
+                    <p class="subvalor">3 turmas vagas</p>
+                </div>
+            </div>
+
+            <div class="card-resumo">
+                <div class="icone-card verde">🗓️</div>
+                <div class="dados-card">
+                    <p class="rotulo-card">Frequência média</p>
+                    <p class="valor-card">92%</p>
+                    <p class="variacao negativo">↓ 2% vs mês ant.</p>
+                </div>
+            </div>
+
+            <div class="card-resumo">
+                <div class="icone-card amarelo">⭐</div>
+                <div class="dados-card">
+                    <p class="rotulo-card">Média geral</p>
+                    <p class="valor-card">7,8</p>
+                    <p class="variacao positivo">↑ 0,3 <span class="seta">T</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="grade-graficos">
+            <div class="card-grafico">
+                <h3>Desempenho por Turma</h3>
+                <div class="legenda">
+                    <span><span class="cor-azul"></span> Média</span>
+                    <span><span class="cor-vermelha"></span> Frequência %</span>
+                </div>
+                <div class="grafico-barras">
+                    <div class="eixo-y">
+                        <span>100</span>
+                        <span>80</span>
+                        <span>60</span>
+                        <span>40</span>
+                        <span>20</span>
+                        <span>0</span>
+                    </div>
+                    <div class="grupo-barras">
+                        <div class="barra azul" style="height: 8%"></div>
+                        <div class="barra vermelha" style="height: 88%"></div>
+                        <p>1°</p>
+                    </div>
+                    <div class="grupo-barras">
+                        <div class="barra azul" style="height: 7%"></div>
+                        <div class="barra vermelha" style="height: 93%"></div>
+                        <p>2°</p>
+                    </div>
+                    <div class="grupo-barras">
+                        <div class="barra azul" style="height: 6%"></div>
+                        <div class="barra vermelha" style="height: 92%"></div>
+                        <p>3°</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-grafico">
+                <h3>Alunos por nível</h3>
+                <div class="legenda-circulo">
+                    <span><span class="cor-azul"></span> 36%</span>
+                    <span><span class="cor-vermelha"></span> 44%</span>
+                    <span><span class="cor-amarela"></span> 19%</span>
+                </div>
+                <div class="grafico-circulo">
+                    <div class="anel"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-ranking">
+            <h3>Ranking de turmas</h3>
+            <table class="tabela-ranking">
+                <thead>
+                    <tr>
+                        <th>Pos.</th>
+                        <th>Turma</th>
+                        <th>Média geral</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1°</td>
+                        <td>2° ANO A</td>
+                        <td><div class="barra-progresso azul" style="width: 92%"></div> 9,2</td>
+                    </tr>
+                    <tr>
+                        <td>2°</td>
+                        <td>3° ANO B</td>
+                        <td><div class="barra-progresso azul" style="width: 85%"></div> 8,5</td>
+                    </tr>
+                    <tr>
+                        <td>3°</td>
+                        <td>1° ANO A</td>
+                        <td><div class="barra-progresso azul" style="width: 78%"></div> 7,8</td>
+                    </tr>
+                    <tr>
+                        <td>4°</td>
+                        <td>2° ANO B</td>
+                        <td><div class="barra-progresso vermelha" style="width: 72%"></div> 7,2</td>
+                    </tr>
+                    <tr>
+                        <td>5°</td>
+                        <td>1° ANO B</td>
+                        <td><div class="barra-progresso vermelha" style="width: 65%"></div> 6,5</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</div>
+</body>
+</html>

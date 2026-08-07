@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alunos - Liceu Piauiense</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/adm/alunos-adm.css') }}">
+</head>
+<body>
+<div class="container">
+    <aside class="sidebar">
+        <div class="logo">
+            <div class="circulo-logo"></div>
+            <h2>LICEU PIAUIENSE</h2>
+        </div>
+
+        <p class="titulo-secao">PRINCIPAL</p>
+        <ul class="menu">
+            <li>🏠 Dashboard</li>
+        </ul>
+
+        <p class="titulo-secao">GESTÃO</p>
+        <ul class="menu">
+            <li class="ativo">👥 Alunos</li>
+            <li>👩‍🏫 Professores</li>
+            <li>🔳 Turmas</li>
+        </ul>
+
+        <p class="titulo-secao">ACADÊMICO</p>
+        <ul class="menu">
+            <li>📝 Notas</li>
+            <li>📅 Frequência</li>
+            <li>🏆 Ranking</li>
+        </ul>
+
+        <div class="configuracoes">
+            ⚙️ Configurações
+        </div>
+    </aside>
+
+    <main class="conteudo">
+        <header class="cabecalho">
+            <div class="titulo-pagina">
+                <h1>Alunos</h1>
+                <p>Gerencie os alunos da instituição.</p>
+            </div>
+            <div class="area-usuario">
+                <span class="icone-sino">🔔</span>
+                <div class="perfil">
+                    <div class="iniciais">AD</div>
+                    <div>
+                        <p class="nome-usuario">Admin</p>
+                        <p class="cargo-usuario">Administrador</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="area-filtros">
+            <input type="text" placeholder="Buscar por nome ou CPF...">
+            <select>
+                <option>Todos</option>
+                <option>Ativo</option>
+                <option>Atenção</option>
+                <option>Risco</option>
+            </select>
+            <button class="btn-novo">+ Novo aluno</button>
+        </div>
+
+        <table class="tabela-alunos">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Turma</th>
+                    <th>Frequência</th>
+                    <th>Média geral</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Ana</td>
+                    <td>123.456.789-01</td>
+                    <td>2º ANO A</td>
+                    <td>92%</td>
+                    <td>8,7</td>
+                    <td><span class="status ativo">Ativo</span></td>
+                    <td class="acoes">👁️ ✏️ ⋮</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Bruno</td>
+                    <td>987.654.321-02</td>
+                    <td>3º ANO B</td>
+                    <td>75%</td>
+                    <td>6,1</td>
+                    <td><span class="status atencao">Atenção</span></td>
+                    <td class="acoes">👁️ ✏️ ⋮</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Carlos Eduardo</td>
+                    <td>456.789.123-03</td>
+                    <td>1º ANO A</td>
+                    <td>69%</td>
+                    <td>4,6</td>
+                    <td><span class="status risco">Risco</span></td>
+                    <td class="acoes">👁️ ✏️ ⋮</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Lucas Gabriel</td>
+                    <td>321.654.987-04</td>
+                    <td>2º ANO B</td>
+                    <td>85%</td>
+                    <td>7,2</td>
+                    <td><span class="status ativo">Ativo</span></td>
+                    <td class="acoes">👁️ ✏️ ⋮</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Beatriz Lima</td>
+                    <td>654.123.987-05</td>
+                    <td>3º ANO A</td>
+                    <td>74%</td>
+                    <td>5,8</td>
+                    <td><span class="status atencao">Atenção</span></td>
+                    <td class="acoes">👁️ ✏️ ⋮</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>José Wanderson</td>
+                    <td>159.753.486-09</td>
+                    <td>1º ANO B</td>
+                    <td>95%</td>
+                    <td>9,1</td>
+                    <td><span class="status ativo">Ativo</span></td>
+                    <td class="acoes">👁️ ✏️ ⋮</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Enzo Ian</td>
+                    <td>753.159.852-07</td>
+                    <td>2º ANO A</td>
+                    <td>71%</td>
+                    <td>4,6</td>
+                    <td><span class="status risco">Risco</span></td>
+                    <td class="acoes">👁️ ✏️ ⋮</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Ana Cecília</td>
+                    <td>357.159.357-08</td>
+                    <td>3º ANO B</td>
+                    <td>82%</td>
+                    <td>6,5</td>
+                    <td><span class="status atencao">Atenção</span></td>
+                    <td class="acoes">👁️ ✏️ ⋮</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>Marília Gabrielly</td>
+                    <td>159.357.486-09</td>
+                    <td>1º ANO A</td>
+                    <td>88%</td>
+                    <td>7,8</td>
+                    <td><span class="status ativo">Ativo</span></td>
+                    <td class="acoes">👁️ ✏️ ⋮</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>Alex Rodrigues</td>
+                    <td>357.159.851-10</td>
+                    <td>2º ANO B</td>
+                    <td>67%</td>
+                    <td>4,3</td>
+                    <td><span class="status risco">Risco</span></td>
+                    <td class="acoes">👁️ ✏️ ⋮</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="rodape-tabela">
+            <span>Mostrando 1 a 10 de 245 alunos</span>
+            <div class="paginacao">
+                <button>&lt;</button>
+                <button class="pag-ativa">1</button>
+                <button>2</button>
+                <button>3</button>
+                <button>&gt;</button>
+                <select>
+                    <option>10 por página</option>
+                    <option>20 por página</option>
+                    <option>50 por página</option>
+                </select>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frequência - Liceu Piauiense</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/adm/frequencia-adm.css') }}">
+</head>
+<body>
+<div class="painel">
+    <aside class="sidebar">
+        <div class="logo">
+            <div class="circulo-logo"></div>
+            <h2>LICEU PIAUIENSE</h2>
+        </div>
+
+        <p class="titulo-secao">PRINCIPAL</p>
+        <ul class="menu">
+            <li>🏠 Dashboard</li>
+        </ul>
+
+        <p class="titulo-secao">GESTÃO</p>
+        <ul class="menu">
+            <li>👥 Alunos</li>
+            <li>👩‍🏫 Professores</li>
+            <li>🔳 Turmas</li>
+        </ul>
+
+        <p class="titulo-secao">ACADÊMICO</p>
+        <ul class="menu">
+            <li>📝 Notas</li>
+            <li class="ativo">📅 Frequência</li>
+            <li>🏆 Ranking</li>
+        </ul>
+
+        <div class="configuracoes">
+            ⚙️ Configurações
+        </div>
+    </aside>
+
+    <main class="conteudo">
+        <header class="cabecalho">
+            <div class="titulo-pagina">
+                <h1>Frequência</h1>
+                <p>Registre a frequência dos alunos (chamada digital).</p>
+            </div>
+            <div class="area-usuario">
+                <span class="icone-sino">🔔</span>
+                <div class="perfil">
+                    <div class="iniciais">AD</div>
+                    <div>
+                        <p class="nome-usuario">Admin</p>
+                        <p class="cargo-usuario">Administrador</p>
+                    </div>
+                    <span class="seta-baixo">▼</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="area-filtros">
+            <div class="grupo-filtro">
+                <label>Selecionar turma</label>
+                <select>
+                    <option>2º B - Desenvolvimento de Sistemas</option>
+                </select>
+            </div>
+            <div class="grupo-filtro">
+                <label>Selecionar data</label>
+                <div class="campo-data">
+                    <span>22/05/2025 (Quinta-feira)</span>
+                    <span class="icone-calendario">🗓️</span>
+                </div>
+            </div>
+            <button class="btn-calendario">🗓️ Ver calendário</button>
+        </div>
+
+        <div class="aviso-registro">
+            <span>ℹ️ Esta data já possui registro de frequência.</span>
+            <a href="#" class="link-correcao">Reabrir para correção</a>
+        </div>
+
+        <table class="tabela-frequencia">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Aluno</th>
+                    <th>Frequência acumulada</th>
+                    <th colspan="2">Status do dia</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Vitória Leocadio</td>
+                    <td>94%</td>
+                    <td><button class="btn-status presente">✓ Presente</button></td>
+                    <td><button class="btn-status falta">✗ Falta</button></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Marcelo Augusto</td>
+                    <td>89%</td>
+                    <td><button class="btn-status presente">✓ Presente</button></td>
+                    <td><button class="btn-status falta">✗ Falta</button></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>José Wanderson</td>
+                    <td>76%</td>
+                    <td><button class="btn-status presente">✓ Presente</button></td>
+                    <td><button class="btn-status falta">✗ Falta</button></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Enzo Ian</td>
+                    <td>82%</td>
+                    <td><button class="btn-status presente">✓ Presente</button></td>
+                    <td><button class="btn-status falta">✗ Falta</button></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Marília Gabrielly</td>
+                    <td>68%</td>
+                    <td><button class="btn-status presente">✓ Presente</button></td>
+                    <td><button class="btn-status falta">✗ Falta</button></td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Ana Cecília</td>
+                    <td>71%</td>
+                    <td><button class="btn-status presente">✓ Presente</button></td>
+                    <td><button class="btn-status falta">✗ Falta</button></td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Nathalia Vieira</td>
+                    <td>93%</td>
+                    <td><button class="btn-status presente">✓ Presente</button></td>
+                    <td><button class="btn-status falta">✗ Falta</button></td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Alex Rodrigues</td>
+                    <td>61%</td>
+                    <td><button class="btn-status presente">✓ Presente</button></td>
+                    <td><button class="btn-status falta">✗ Falta</button></td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>Lucas Gabriel</td>
+                    <td>88%</td>
+                    <td><button class="btn-status presente">✓ Presente</button></td>
+                    <td><button class="btn-status falta">✗ Falta</button></td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>Beatriz Lima</td>
+                    <td>79%</td>
+                    <td><button class="btn-status presente">✓ Presente</button></td>
+                    <td><button class="btn-status falta">✗ Falta</button></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="rodape-frequencia">
+            <div class="total-alunos">
+                <span class="icone-total">👥</span>
+                <div>
+                    <p>Total de alunos</p>
+                    <strong>38</strong>
+                </div>
+            </div>
+            <button class="btn-salvar">💾 Salvar Frequência do Dia</button>
+        </div>
+
+        <p class="aviso-envio">ⓘ Ao salvar, o sistema enviará os status para POST /admin/frequencia.</p>
+    </main>
+</div>
+</body>
+</html>

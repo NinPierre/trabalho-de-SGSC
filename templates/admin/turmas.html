@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turmas - Liceu Piauiense</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/adm/turmas-adm.css') }}">
+</head>
+<body>
+<div class="painel">
+    <!-- Barra Lateral -->
+    <aside class="sidebar">
+        <div class="logo">
+            <div class="circulo-logo"></div>
+            <h2>LICEU PIAUIENSE</h2>
+        </div>
+
+        <p class="titulo-secao">PRINCIPAL</p>
+        <ul class="menu">
+            <li>🏠 Dashboard</li>
+        </ul>
+
+        <p class="titulo-secao">GESTÃO</p>
+        <ul class="menu">
+            <li>👥 Alunos</li>
+            <li>👩‍🏫 Professores</li>
+            <li class="ativo">🔳 Turmas</li>
+        </ul>
+
+        <p class="titulo-secao">ACADÊMICO</p>
+        <ul class="menu">
+            <li>📝 Notas</li>
+            <li>📅 Frequência</li>
+            <li>🏆 Ranking</li>
+        </ul>
+
+        <div class="configuracoes">
+            ⚙️ Configurações
+        </div>
+    </aside>
+
+    <!-- Conteúdo Principal -->
+    <main class="conteudo">
+        <header class="cabecalho">
+            <div class="titulo-pagina">
+                <h1>Turmas</h1>
+                <p>Gerencie as turmas da instituição.</p>
+            </div>
+            <div class="area-usuario">
+                <span class="icone-sino">🔔</span>
+                <div class="perfil">
+                    <div class="iniciais">AD</div>
+                    <div>
+                        <p class="nome-usuario">Admin</p>
+                        <p class="cargo-usuario">Administrador</p>
+                    </div>
+                    <span class="seta-baixo">▼</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Barra de Busca e Botão -->
+        <div class="area-acao">
+            <input type="text" placeholder="Buscar turma...">
+            <button class="btn-novo">+ Nova Turma</button>
+        </div>
+
+        <!-- Grade de Turmas -->
+        <div class="grade-turmas">
+            <!-- Turma 1 -->
+            <div class="card-turma">
+                <h3>2º B – Desenvolvimento de Sistemas</h3>
+                <ul class="info-turma">
+                    <li>👩‍🏫 Maria do Socorro Eufrásio Mota</li>
+                    <li>📅 Série: 2º Ano</li>
+                    <li>📍 Turno: Vespertino</li>
+                </ul>
+                <div class="dados-desempenho">
+                    <div class="item-dado">
+                        <strong>8,2</strong>
+                        <span>Média geral</span>
+                    </div>
+                    <div class="item-dado">
+                        <strong>94%</strong>
+                        <span>Frequência coletiva</span>
+                    </div>
+                </div>
+                <div class="botoes-card">
+                    <button class="btn-visualizar">👁 Visualizar</button>
+                    <button class="btn-editar">✏ Editar</button>
+                </div>
+            </div>
+
+            <!-- Turma 2 -->
+            <div class="card-turma">
+                <h3>2º B – Jogos Digitais</h3>
+                <ul class="info-turma">
+                    <li>👩‍🏫 Maria do Socorro Eufrásio Mota</li>
+                    <li>📅 Série: 2º Ano</li>
+                    <li>📍 Turno: Vespertino</li>
+                </ul>
+                <div class="dados-desempenho">
+                    <div class="item-dado">
+                        <strong>7,8</strong>
+                        <span>Média geral</span>
+                    </div>
+                    <div class="item-dado">
+                        <strong>90%</strong>
+                        <span>Frequência coletiva</span>
+                    </div>
+                </div>
+                <div class="botoes-card">
+                    <button class="btn-visualizar">👁 Visualizar</button>
+                    <button class="btn-editar">✏ Editar</button>
+                </div>
+            </div>
+
+            <!-- Turma 3 -->
+            <div class="card-turma">
+                <h3>3º A – Desenvolvimento de Sistemas</h3>
+                <ul class="info-turma">
+                    <li>👩‍🏫 Maria do Socorro Eufrásio Mota</li>
+                    <li>📅 Série: 3º Ano</li>
+                    <li>📍 Turno: Vespertino</li>
+                </ul>
+                <div class="dados-desempenho">
+                    <div class="item-dado">
+                        <strong>8,8</strong>
+                        <span>Média geral</span>
+                    </div>
+                    <div class="item-dado">
+                        <strong>95%</strong>
+                        <span>Frequência coletiva</span>
+                    </div>
+                </div>
+                <div class="botoes-card">
+                    <button class="btn-visualizar">👁 Visualizar</button>
+                    <button class="btn-editar">✏ Editar</button>
+                </div>
+            </div>
+
+            <!-- Turma 4 -->
+            <div class="card-turma">
+                <h3>1º A – Desenvolvimento de Sistemas</h3>
+                <ul class="info-turma">
+                    <li>👩‍🏫 Maria do Socorro Eufrásio Mota</li>
+                    <li>📅 Série: 1º Ano</li>
+                    <li>📍 Turno: Vespertino</li>
+                </ul>
+                <div class="dados-desempenho">
+                    <div class="item-dado">
+                        <strong>7,5</strong>
+                        <span>Média geral</span>
+                    </div>
+                    <div class="item-dado">
+                        <strong>98%</strong>
+                        <span>Frequência coletiva</span>
+                    </div>
+                </div>
+                <div class="botoes-card">
+                    <button class="btn-visualizar">👁 Visualizar</button>
+                    <button class="btn-editar">✏ Editar</button>
+                </div>
+            </div>
+
+            <!-- Turma 5 -->
+            <div class="card-turma">
+                <h3>3º B – Jogos Digitais</h3>
+                <ul class="info-turma">
+                    <li>👩‍🏫 Maria do Socorro Eufrásio Mota</li>
+                    <li>📅 Série: 3º Ano</li>
+                    <li>📍 Turno: Vespertino</li>
+                </ul>
+                <div class="dados-desempenho">
+                    <div class="item-dado">
+                        <strong>7,9</strong>
+                        <span>Média geral</span>
+                    </div>
+                    <div class="item-dado">
+                        <strong>92%</strong>
+                        <span>Frequência coletiva</span>
+                    </div>
+                </div>
+                <div class="botoes-card">
+                    <button class="btn-visualizar">👁 Visualizar</button>
+                    <button class="btn-editar">✏ Editar</button>
+                </div>
+            </div>
+
+            <!-- Turma 6 -->
+            <div class="card-turma">
+                <h3>1º B – Jogos Digitais</h3>
+                <ul class="info-turma">
+                    <li>👩‍🏫 Maria do Socorro Eufrásio Mota</li>
+                    <li>📅 Série: 1º Ano</li>
+                    <li>📍 Turno: Vespertino</li>
+                </ul>
+                <div class="dados-desempenho">
+                    <div class="item-dado">
+                        <strong>7,2</strong>
+                        <span>Média geral</span>
+                    </div>
+                    <div class="item-dado">
+                        <strong>85%</strong>
+                        <span>Frequência coletiva</span>
+                    </div>
+                </div>
+                <div class="botoes-card">
+                    <button class="btn-visualizar">👁 Visualizar</button>
+                    <button class="btn-editar">✏ Editar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rodapé e Paginação -->
+        <div class="rodape-tabela">
+            <span>Mostrando 1 a 6 de 12 turmas</span>
+            <div class="paginacao">
+                <button>&lt;</button>
+                <button class="pag-ativa">1</button>
+                <button>2</button>
+                <button>&gt;</button>
+                <select>
+                    <option>6 por página</option>
+                    <option>12 por página</option>
+                </select>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>

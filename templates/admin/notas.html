@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/adm/notas-adm.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="circulo-logo"></div>
+            <h2>LICEU PIAUIENSE</h2>
+        </div>
+
+        <span class="titulo-menu">PRINCIPAL</span>
+
+        <ul>
+            <li>🏠 Dashboard</li>
+        </ul>
+
+        <span class="titulo-menu">GESTÃO</span>
+
+        <ul>
+            <li>👥 Alunos</li>
+            <li>👩‍🏫 Professores</li>
+            <li>🔳 Turmas</li>
+        </ul>
+
+        <span class="titulo-menu">ACADÊMICO</span>
+
+        <ul>
+            <li class="ativo">📝 Notas</li>
+            <li>📅 Frequência</li>
+            <li>🏆 Ranking</li>
+        </ul>
+
+        <div class="config">
+            ⚙ Configurações
+        </div>
+
+    </aside>
+
+    <main class="conteudo">
+
+        <!-- Cabeçalho -->
+        <header class="cabecalho">
+
+            <div>
+                <h1>Notas</h1>
+                <p>Gerencie as notas dos alunos por turma e disciplina.</p>
+            </div>
+
+            <div class="usuario">
+                <span class="notificacao">🔔</span>
+
+                <div class="avatar">
+                    AD
+                </div>
+
+                <div>
+                    <strong>Admin</strong>
+                    <p>Administrador</p>
+                </div>
+
+            </div>
+
+        </header>
+
+        <section class="card filtros">
+
+            <div class="campo">
+
+                <label>Selecionar turma</label>
+
+                <select>
+                    <option>2º B - Desenvolvimento de Sistemas</option>
+                </select>
+
+            </div>
+
+            <div class="campo">
+
+                <label>Selecionar disciplina</label>
+
+                <select>
+                    <option>Matemática</option>
+                </select>
+
+            </div>
+
+            <button class="btn-carregar">
+                🔄 Carregar Notas
+            </button>
+
+        </section>
+
+        <section class="card">
+
+            <table>
+
+                <thead>
+
+                <tr>
+                    <th>#</th>
+                    <th>Aluno</th>
+                    <th>1º Bimestre</th>
+                    <th>2º Bimestre</th>
+                    <th>3º Bimestre</th>
+                    <th>Média</th>
+                </tr>
+
+                </thead>
+
+                <tbody>
+
+                <tr>
+                    <td>1</td>
+                    <td>Vitória Leocadio</td>
+                    <td><input type="text" value="9,5"></td>
+                    <td><input type="text" value="9,0"></td>
+                    <td><input type="text" value="9,2"></td>
+                    <td class="media azul">9,2</td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>Marcelo Augusto</td>
+                    <td><input type="text" value="8,5"></td>
+                    <td><input type="text" value="8,0"></td>
+                    <td><input type="text" value="8,4"></td>
+                    <td class="media azul">8,3</td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>José Wanderson</td>
+                    <td><input type="text" value="7,5"></td>
+                    <td><input type="text" value="7,0"></td>
+                    <td><input type="text" value="7,8"></td>
+                    <td class="media azul">7,4</td>
+                </tr>
+
+                <tr>
+                    <td>4</td>
+                    <td>Enzo Ian</td>
+                    <td><input type="text" value="6,5"></td>
+                    <td><input type="text" value="6,8"></td>
+                    <td><input type="text" value="6,7"></td>
+                    <td class="media azul">6,7</td>
+                </tr>
+
+                <tr>
+                    <td>5</td>
+                    <td>Marília Gabrielly</td>
+                    <td><input type="text" value="5,0"></td>
+                    <td><input type="text" value="5,5"></td>
+                    <td><input type="text" value="5,0"></td>
+                    <td class="media vermelha">5,2</td>
+                </tr>
+
+                <tr>
+                    <td>6</td>
+                    <td>Ana Cecília</td>
+                    <td><input type="text" value="4,5"></td>
+                    <td><input type="text" value="4,8"></td>
+                    <td><input type="text" value="5,0"></td>
+                    <td class="media vermelha">4,8</td>
+                </tr>
+
+                <tr>
+                    <td>7</td>
+                    <td>Nathalia Vieira</td>
+                    <td><input type="text" value="8,0"></td>
+                    <td><input type="text" value="8,5"></td>
+                    <td><input type="text" value="8,3"></td>
+                    <td class="media azul">8,3</td>
+                </tr>
+
+                <tr>
+                    <td>8</td>
+                    <td>Alex Rodrigues</td>
+                    <td><input type="text" value="4,0"></td>
+                    <td><input type="text" value="4,5"></td>
+                    <td><input type="text" value="4,8"></td>
+                    <td class="media vermelha">4,4</td>
+                </tr>
+
+                </tbody>
+
+            </table>
+
+            <button class="btn-salvar">
+                💾 Salvar Alterações
+            </button>
+
+            <p class="info">
+                ℹ As médias são recalculadas automaticamente ao editar uma nota.
+            </p>
+
+        </section>
+
+    </main>
+
+</div>
+
+</body>
+</html>
