@@ -22,7 +22,7 @@
         <p>Educação que transforma.</p>
       </section>
 
-      <form class="login-card" action="{{ url_for('autenticar') }}" method="post">
+      <form class="login-card" action="{{ url_for('auth_bp.autenticar') }}" method="post">
         {% with messages = get_flashed_messages() %}
           {% if messages %}
             {% for message in messages %}

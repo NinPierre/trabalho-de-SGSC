@@ -7,7 +7,8 @@ DATABASE_URL = "sqlite:///liceu.db"
 # Cria a conexão
 engine = create_engine(
     DATABASE_URL,
-    echo=True
+    echo=False,
+    connect_args={"check_same_thread": False}
 )
 
 # Cria a sessão

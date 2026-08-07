@@ -22,20 +22,20 @@
 
       <nav class="sidebar-nav" aria-label="Menu principal">
         {% if perfil == 'professor' %}
-          <a class="nav-link {{ 'active' if active_page == 'professor_inicio' else '' }}" href="{{ url_for('professor_inicio') }}"><span class="material-symbols-outlined">home</span>Início</a>
-          <a class="nav-link {{ 'active' if active_page == 'lancar_notas' else '' }}" href="{{ url_for('lancar_notas') }}"><span class="material-symbols-outlined">edit_note</span>Lançar Notas</a>
-          <a class="nav-link {{ 'active' if active_page == 'chamadas' else '' }}" href="{{ url_for('fazer_chamada') }}"><span class="material-symbols-outlined">assignment_turned_in</span>Fazer Chamada</a>
-          <a class="nav-link {{ 'active' if active_page == 'desempenho' else '' }}" href="{{ url_for('professor_desempenho') }}"><span class="material-symbols-outlined">monitoring</span>Desempenho</a>
-          <a class="nav-link {{ 'active' if active_page == 'alertas' else '' }}" href="{{ url_for('alunos_alerta') }}"><span class="material-symbols-outlined">warning</span>Alunos em Alerta</a>
-          <a class="nav-link {{ 'active' if active_page == 'relatorios' else '' }}" href="{{ url_for('professor_relatorios') }}"><span class="material-symbols-outlined">description</span>Relatórios</a>
+          <a class="nav-link {{ 'active' if active_page == 'professor_inicio' else '' }}" href="{{ url_for('professor_bp.professor_inicio') }}"><span class="material-symbols-outlined">home</span>Início</a>
+          <a class="nav-link {{ 'active' if active_page == 'lancar_notas' else '' }}" href="{{ url_for('professor_bp.lancar_notas') }}"><span class="material-symbols-outlined">edit_note</span>Lançar Notas</a>
+          <a class="nav-link {{ 'active' if active_page == 'chamadas' else '' }}" href="{{ url_for('professor_bp.fazer_chamada') }}"><span class="material-symbols-outlined">assignment_turned_in</span>Fazer Chamada</a>
+          <a class="nav-link {{ 'active' if active_page == 'desempenho' else '' }}" href="{{ url_for('professor_bp.professor_desempenho') }}"><span class="material-symbols-outlined">monitoring</span>Desempenho</a>
+          <a class="nav-link {{ 'active' if active_page == 'alertas' else '' }}" href="{{ url_for('professor_bp.alunos_alerta') }}"><span class="material-symbols-outlined">warning</span>Alunos em Alerta</a>
+          <a class="nav-link {{ 'active' if active_page == 'relatorios' else '' }}" href="{{ url_for('professor_bp.professor_relatorios') }}"><span class="material-symbols-outlined">description</span>Relatórios</a>
         {% else %}
-          <a class="nav-link {{ 'active' if active_page == 'aluno_inicio' else '' }}" href="{{ url_for('aluno_inicio') }}"><span class="material-symbols-outlined">home</span>Início</a>
-          <a class="nav-link {{ 'active' if active_page == 'ranking_turma' else '' }}" href="{{ url_for('ranking_turma') }}"><span class="material-symbols-outlined">workspace_premium</span>Ranking da Turma</a>
-          <a class="nav-link {{ 'active' if active_page == 'ranking_alunos' else '' }}" href="{{ url_for('ranking_alunos') }}"><span class="material-symbols-outlined">groups</span>Ranking dos Alunos</a>
-          <a class="nav-link {{ 'active' if active_page == 'ranking_turmas' else '' }}" href="{{ url_for('ranking_turmas') }}"><span class="material-symbols-outlined">school</span>Ranking das Turmas</a>
+          <a class="nav-link {{ 'active' if active_page == 'aluno_inicio' else '' }}" href="{{ url_for('aluno_bp.aluno_inicio') }}"><span class="material-symbols-outlined">home</span>Início</a>
+          <a class="nav-link {{ 'active' if active_page == 'ranking_turma' else '' }}" href="{{ url_for('aluno_bp.ranking_turma') }}"><span class="material-symbols-outlined">workspace_premium</span>Ranking da Turma</a>
+          <a class="nav-link {{ 'active' if active_page == 'ranking_alunos' else '' }}" href="{{ url_for('aluno_bp.ranking_alunos') }}"><span class="material-symbols-outlined">groups</span>Ranking dos Alunos</a>
+          <a class="nav-link {{ 'active' if active_page == 'ranking_turmas' else '' }}" href="{{ url_for('aluno_bp.ranking_turmas') }}"><span class="material-symbols-outlined">school</span>Ranking das Turmas</a>
           <div class="nav-separator"></div>
-          <a class="nav-link {{ 'active' if active_page == 'notas' else '' }}" href="{{ url_for('aluno_notas') }}"><span class="material-symbols-outlined">fact_check</span>Minhas Notas</a>
-          <a class="nav-link {{ 'active' if active_page == 'presenca' else '' }}" href="{{ url_for('aluno_presenca') }}"><span class="material-symbols-outlined">event_available</span>Presença nas Aulas</a>
+          <a class="nav-link {{ 'active' if active_page == 'notas' else '' }}" href="{{ url_for('aluno_bp.aluno_notas') }}"><span class="material-symbols-outlined">fact_check</span>Minhas Notas</a>
+          <a class="nav-link {{ 'active' if active_page == 'presenca' else '' }}" href="{{ url_for('aluno_bp.aluno_presenca') }}"><span class="material-symbols-outlined">event_available</span>Presença nas Aulas</a>
         {% endif %}
       </nav>
 
@@ -61,7 +61,7 @@
             <span class="material-symbols-outlined profile-chevron">expand_more</span>
           </div>
           <div class="profile-dropdown" id="profileDropdown">
-            <a class="dropdown-item" href="{{ url_for('logout') }}">
+            <a class="dropdown-item" href="{{ url_for('auth_bp.logout') }}">
               <span class="material-symbols-outlined">logout</span>Sair
             </a>
           </div>
