@@ -16,6 +16,8 @@ def autenticar_usuario(cpf, senha):
 
 
 def perfil_para_sessao(perfil):
-    if perfil in {"professor", "admin"}:
+    if perfil == "admin":
+        return "admin"
+    elif perfil == "professor":
         return "professor"
     return "aluno"

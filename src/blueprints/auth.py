@@ -30,6 +30,8 @@ def login():
             return redirect(url_for("professor_bp.professor_inicio"))
         if session.get("perfil_usuario") == "aluno":
             return redirect(url_for("aluno_bp.aluno_inicio"))
+        if session.get("perfil_usuario") == "admin":
+            return redirect(url_for("admin_bp.admin_dashboard"))
     return render_template("login.html")
 
 
@@ -48,6 +50,8 @@ def autenticar():
 
     if session["perfil_usuario"] == "professor":
         return redirect(url_for("professor_bp.professor_inicio"))
+    if session["perfil_usuario"] == "admin":
+        return redirect(url_for("admin_bp.admin_dashboard"))
     return redirect(url_for("aluno_bp.aluno_inicio"))
 
 

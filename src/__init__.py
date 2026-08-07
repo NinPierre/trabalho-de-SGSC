@@ -16,10 +16,12 @@ def create_app():
     from src.blueprints.auth import auth_bp
     from src.blueprints.professor import professor_bp
     from src.blueprints.aluno import aluno_bp
+    from src.blueprints.adimin import admin_bp
 
     app.register_blueprint(auth_bp)
     app.register_blueprint(professor_bp)
     app.register_blueprint(aluno_bp)
+    app.register_blueprint(admin_bp)
 
     return app
 

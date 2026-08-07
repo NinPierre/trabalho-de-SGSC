@@ -333,6 +333,7 @@ if __name__ == "__main__":
 
     if not buscar_usuario("12345678910", "123"):
         criar_usuario("pierre", "12345678910", "123", "professor")
+        criar_usuario("ze", "12345678912", "123", "admin")
         criar_usuario("Marcelo", "12345678911", "123", "aluno")
         print("Usuário administrador criado com sucesso.")
     else:
